@@ -1,1 +1,193 @@
-Hello World
+{% extends 'base.html' %}
+
+{% block head %}
+    <title>KPN-Internal Pooja CV</title>
+    <style>
+        .compact-dd {
+            margin-top: 0;
+            margin-bottom: 0;
+            padding-top: 0;
+            padding-bottom: 0;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+    <div id="entire-body">
+        <div id="left-panel-main" class="left-panel" style="margin-left:1%; margin-right:5%;">
+            <div id="lp-photo" style="margin-left:8%;">
+                <img class="profile-img" src="{{ url_for('static', filename='assets/Pooja.jpeg') }}" alt="" width="140" height="150">
+            </div>
+            <br>
+            <div id="lp-career-objective" style="font-size:70%;">
+                <h6>CAREER OBJECTIVE</h6>
+                Continuously innovate and outperform <br>in software development.
+
+                <hr>
+            </div>
+            <div id="lp-personal-details" style="font-size:70%;">
+                <h6>PERSONAL DETAILS</h6>
+                <table style="margin-top:1px;">
+                    <tr>
+                        <td><b> Age </b></td>
+                        <td> 27 </td>
+                    </tr>
+                    <tr>
+                        <td><b> Nationality </b></td>
+                        <td> Indian </td>
+                    </tr>
+                    <tr>
+                        <td><b> Status </b></td>
+                        <td> Married </td>
+                    </tr>
+                    <tr>
+                        <td><b> Residence </b></td>
+                        <td> Nagarbhavi, Bangalore </td>
+                    </tr>
+                    <tr>
+                        <td><b> Hobbies </b></td>
+                        <td> Travelling, Learning new things &  Music</td>
+                    </tr>
+                </table>
+                <hr>
+            </div>
+            <div id="lp-skills" style="font-size:70%;">
+                <h6>Technical Skills</h6>
+                Python (Django, Async Python), <br>
+                C, C++, <br>
+                JavaScript (Vue.js, Jest),
+                SQL (Postgres, MySQL, SQLAlchemy),  <br>
+                Unit Testing(Pytest), Pandas,
+                Groovy, HTML, CSS, <br>
+                Jenkins, CI/CD, Docker, Kubernetes,
+                Redis, ServiceNow, Elasticsearch, Artifactory,
+                AWS, Jira, Git, Ansible, Agile way of working <br>
+            </div>
+            <hr>
+             <div id="lp-skills" style="font-size:70%;">
+                <h6>Soft Skills Skills</h6>
+                Team Player, Eager to learn, Communicative,<br>
+                Flexible, Ambitious,
+                 strong writing skills and understanding<br>
+            </div>
+                <hr>
+                <div id="lp-courses" style="font-size:70%;">
+                    <h6> Related Course</h6>
+                        <b> ABC Technologies | (MAY 2021 - JAN 2022) </b>
+                        <br>
+                    <br>
+                    <b>Java Full stack development</b> <br> <b>Basics: </b>OOPS concepts etc. <br><b>Advance java:</b> JDBC, Servlets and JSP etc.<br><b>Java Frameworks: </b>Spring<br>
+                    <b> Python Full stack development </b> <br> <b>Python Basics: </b>OOPS concepts etc. <br><b>Advanced concept: </b>Multiprocessing, Multithreading etc.
+                    <br> <b> Python Framework: </b>Django, Flask<br>
+                </div>
+                <div id="rp-education" style="font-size:80%">
+                    <hr>
+                    <h6>EDUCATION</h6>
+                    <b style="font-size:80%;">KLE Nijalingappa College</b> | <span style="font-size: 10px;"> <b>Master in Computer Applications (DEC 2017-DEC 2019)</b></span> <br>
+                    <div style="margin-left:1%; font-size:80%;">
+                       <b> Internship: </b>Three Layer Privacy Preservation on Cloud Computing using Fog Server -Java <b>CGPA:</b> <b>7.23</b> <br>
+                    </div>
+                    <br>
+                    <b style="font-size:80%;">Vasavi College</b> | <span style="font-size: 10px;"><b>Bachelor in Computer Application (SEP 2016-SEP 2017) </b> </span> <br>
+                    <div style="margin-left:1%; font-size:80%;">
+                        <b>CGPA: </b><b>7.15</b> <br>
+                    </div>
+            </div>
+            </div>
+        </div>
+        </div>
+        <div id="right-panel-main" class="right-panel" style="margin-left:5vw; margin-top:1%; overflow:hidden;">
+            <div id="rp-title-info">
+                <h2>POOJA NIRANJAN SHETTY</h2>
+                <div style="font-size:70%;">
+                    <a class="a-self-links" href="https://www.linkedin.com/in/pooja-shetty-027b46177/" target="_blank">
+                        <img src="{{ url_for('static', filename='assets/LinkedIn.svg') }}" alt="" width="18" height="18"> LinkedIn
+                    </a>
+                    <a class="a-self-links" href="https://github.com/poojanshetty" target="_blank">
+                        <img src="{{ url_for('static', filename='assets/GitHub.png') }}" alt="" width="18" height="18"> GitHub
+                    </a>
+                    <a class="a-self-links">
+                        <img src="{{ url_for('static', filename='assets/Email.svg') }}" alt="" width="21" height="18"> poojaniranjanshetty@gmail.com
+                    </a>
+                    <a class="a-self-links">
+                        <img src="{{ url_for('static', filename='assets/Call.svg') }}" alt="" width="18" height="18"> +91 9916073885
+                    </a>
+                </div>
+                <br>
+            </div>
+            <div id="rp-work-experience" style="font-size:80%">
+                <hr>
+                <b class="job-title">MATERNITY BREAK</b> (Nov 2024 - present)<br>
+                <div style="margin-left:1%; font-size:75%;"><br>
+                    <dd class="compact-dd">&bull; Returned to Bangalore  </dd>
+                </div>
+                <br>
+                <b class="job-title">DEVOPS ENGINEER (<a href="http://tv.kpn.com" target="_blank">tv.kpn.com</a>)</b> | <b>KPN, Amsterdam</b> (AUG 2023 - OCT 2024) <br>
+            <div style="margin-left:1%; font-size:75%;"><br>
+            <p> This team maintains the backend of the KPN TV. We are a team of 4 with some Java developers, Frontend Developer and me as a Python Developer. </p>
+                <dd class="compact-dd">&bull; As a part of team I maintained python projects in our team worked on feature stories and bug solving. I worked on Innovation side more by creating a projects which can improve our video backend to process fast and maintain well.  </dd>
+                <dd class="compact-dd">&bull; Created a "Maxmind" application to check the client IP address and determine from which geograpy is the request from Eg: If the IP address of the request making to our website is in EU then allow broadcasting </dd>
+                <dd class="compact-dd">&bull; Created application "Jafar" to checks whether a user has already requested and viewed the same video within their profile. If the video has been previously played on another device under the same profile, Jafar disallows its playback, indicating that the video has already been viewed on another device.</dd>
+                <dd class="compact-dd">&bull; Made a application "Nasclean" this is mainly built to clean/perform operations on machines via cronjob in Nas or our VM storage where all our recording is stored. </dd>
+                <dd class="compact-dd">&bull; Between in few months working on migration of our Gitlab and jenkins to using Github ci/cd </dd>
+                <dd class="compact-dd">&bull; I worked on "Operations" side as well worked or the request made by the customers like features or bug. We call it <b>Opsgeine</b> </dd>
+                <dd>  <b> Also worked on major projects like:</b> Reflector (generates the url for user for connecting to the videos to lay), TlSDB (certificate renewal), live-channel-generator etc.,  </dd>
+                </dt>
+                </dl>
+                <div>
+                    <b>Main Stacks:</b><br>
+                    Python(Django, FASTAPI), Jenkins, Groovy, CI/CD, Docker, Ansible scripting, Linux machines,
+                    DevOps, Gitlab, Redis, Kubernetes, Jira, ServiceNow, AWS,
+                    Agile way of working, ElasticSearch, Splunk, Grafana, Jfrog, Sonarqube, Checkmarx<br>
+                </div>
+            </div>
+                <hr>
+                <b class="job-title">SOFTWARE ENGINEER (D-Nitro)</b> | <b>KPN, Amsterdam</b> (APR 2022 - AUG 2023) <br>
+                    <div style="margin-left:1%; font-size:75%;"><br>
+                        <p> As part of the this team, I developed applications to enhance CI/CD processes for company developers. This role provided exposure to various tools and technologies, where I consistently delivered high-quality, future-proof code.</p>
+                            <dd class="compact-dd">&bull; I worked on development side more also in bug resolving stories and feature requested my clients. My another half time was attending "Operations" work or stories improving by request of clients </dd>
+                            <dd class="compact-dd">&bull; Contributed in improving Front-End of one of our applications "Console" using "vue.js" and backend "Django"</dd>
+                            <dd class="compact-dd">&bull; Created an "Katka-development" project which is an orchestration tool using Typer CLI that aims to clone all 4 repositories and spin up all Katka services and run Redis database at once for performing integration for all  </dd>
+                            <dd class="compact-dd">&bull; Managed more than 100 jenkins instances with 12 EC2 instances and accelerated them to use out jenkins in company </dd>
+                            <dd class="compact-dd">&bull; We maintained Slack, Katka, LDAP, Jenkins, bitbucket, sonarqube, checkmarks, Console applications and managed developers who use these we have a Django application "D-hub" to maintain</dd>
+                            <dd class="compact-dd">&bull; Worked on "Katka" application. Katka is an application used to make users CI/CD to be easy. When the user commits the code in git then the Katka is Triggered. It runs the pipeline for user and created the versioning and tagging for the release. Also creates the SNOW ticket for the user automitacally. Katka application is build uing Async Python and Frontend-Vue.Js. </dd>
+                            <dl><b> Also Worked on applications like D-Hub, D-Auth(LDAP), Jenkins-agent-ami etc.,</b> </dl>
+                        </dt>
+                        </dl>
+                    <div>
+                        <b>Main Stacks:</b><br>
+                        Python(Django, AIOHTTP, Pytest), JavaScript (Vue.js, Jest), Jenkins, Groovy, CI/CD, Docker,
+                        DevOps, Bitbucket, Redis, Kubernetes, Jira, ServiceNow, ElasticSearch, AWS.
+                        Agile way of working. <br>
+                    </div>
+                </div>
+                <hr>
+                <b class="job-title">ASP.NET DEVELOPER</b> | <b>Enrich Techno-soft </b> (NOV 2020 - APR 2021) <br>
+                <div style="margin-left:1%; font-size:75%;"><br>
+                    <p> Gained comprehensive full-stack development experience in this team, contributing to project and enhancing foundational knowledge in web development. Collaborated closely with cross-functional teams to deliver robust solutions.</p>
+                    <dt>Travel Portal</dt>
+                    <dl>
+                        <dd class="compact-dd">&bull; <b>Front-End Development:</b> Designed and developed the front-end for hotel, car rental, and flight booking services, ensuring a user-friendly and responsive interface.</dd>
+                        <dd class="compact-dd">&bull; <b>API Development: </b>Built RESTful APIs to handle booking transactions, customer queries, and payment processes, facilitating smooth data exchange between the front-end and back-end systems.</dd>
+                        <dd class="compact-dd">&bull; <b>Multilingual Support:</b> Implemented translation functionality, enabling seamless switching between English and Arabic languages to cater to a diverse user base.</dd>
+                        <dd class="compact-dd">&bull; <b>Payment Gateway Integration:</b> Integrated secure payment gateways to handle transactions, ensuring compliance with industry standards and providing a seamless payment experience for users.</dd>
+                        <dd class="compact-dd">&bull; <b>Database Management: </b> Designed and managed SQL Server databases to store booking information, user profiles, and transaction details, ensuring data integrity and security.</dd>
+                    </dl>
+                    <div>
+                        <b>Main Stacks: </b><br>
+                        ASP.net, C#, MVC Architecture, CSS, HTML, javascript, SQL server, REST API. <br>
+                    </div>
+                </div>
+                <hr>
+                <div>
+                <b class="job-title">PROGRAMMING TRAINER</b> | <b>Capital Computers </b> (JUL 2018 - Oct 2020)<br>
+                <div style="margin-left:1%; font-size:75%;"><br>
+                    <p> Conducted comprehensive training sessions for college students in various programming languages and tools, fostering a strong foundation in both theoretical concepts and practical applications. Designed curriculum, delivered lectures, and provided hands-on coding exercises to enhance students' coding skills and prepare them for real-world challenges.</p>
+                    <dd class="compact-dd">&bull; <b>Curriculum Design:</b> Developed detailed lesson plans and instructional materials for courses in C, C++, Java, Python, CSS, JavaScript, HTML, SQL, and accounting tools. </dd>
+                    <dd class="compact-dd">&bull; <b>Hands-on Coding Exercises:</b> Provided practical coding exercises and projects to reinforce theoretical knowledge</dd>
+                    <dd class="compact-dd"> &bull; <b>Assessment and Evaluation:</b> Students were provide assignments and exams according to the evaluation the students were provided certifiacation and helped them find job by Institution</dd>
+                </div>
+            </div>
+    </div>
+{% endblock %}
+</div>
