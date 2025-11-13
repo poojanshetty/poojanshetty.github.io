@@ -39,12 +39,12 @@ portfolio/
 ├── index.html               # Main portfolio page
 ├── static/
 │   ├── assets/              # Images and logos
-│   │   ├── profile-photo.jpeg
-│   │   ├── kpn-logo.png
-│   │   ├── maternity.jpg
-│   │   └── other images...
-│   └── js/
-│       └── script.js        # (Optional JS for interactivity)
+│       ├── profile-photo.jpeg
+│       ├── kpn-logo.png
+│       ├── maternity.jpg
+│       └── other images...
+│   
+│       
 └── README.md                # Project documentation
 ```
 
