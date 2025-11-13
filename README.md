@@ -67,7 +67,7 @@ portfolio/
 
 ## 🔗 Live Demo
 
-👉 [Visit My Portfolio](https://poojanshetty.github.io/my_website/) *
+👉 [Visit My Portfolio] *
 
 ---
 
