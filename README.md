@@ -65,17 +65,9 @@ portfolio/
 
 ---
 
-## 🖼️ Preview
-
-![Portfolio Screenshot](static/assets/profile-photo.jpeg)
-
-*(Replace with your actual screenshot if available)*
-
----
-
 ## 🔗 Live Demo
 
-👉 [Visit My Portfolio](https://poojanshetty.github.io) *(Replace with your actual URL once hosted)*
+👉 [Visit My Portfolio](https://poojanshetty.github.io/my_website/) *
 
 ---
 
