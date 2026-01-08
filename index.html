@@ -5,725 +5,1532 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pooja Niranjan Shetty - Portfolio</title>
     <style>
+    /* ---------- CSS Variables ---------- */
+    :root {
+        --primary: #7b5dfb;
+        --secondary: #5b85f6;
+        --accent: #ff6b8b;
+        --dark: #333;
+        --light: #f8f9fb;
+        --gray: #6c757d;
+        --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+    }
+
     /* ---------- Base Styles ---------- */
-    body {
-        font-family: 'Inter', 'Lato', sans-serif;
+    * {
         margin: 0;
         padding: 0;
-        background: linear-gradient(135deg, #f8f9fb, #e8ebf5);
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: 'Inter', 'Lato', sans-serif;
+        background: linear-gradient(135deg, #f8f9fb 0%, #e8ebf5 100%);
         color: #444;
         scroll-behavior: smooth;
+        line-height: 1.6;
     }
 
     /* ---------- Header ---------- */
     header {
-        background: linear-gradient(90deg, #7b5dfb, #5b85f6);
-        color: #fff;
-        padding: 60px 20px;
+        background: linear-gradient(135deg, var(--primary), var(--secondary));
+        color: white;
+        padding: 80px 20px 60px;
         text-align: center;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    }
-    header h1 {
-        font-size: 2.4rem;
-        margin-bottom: 10px;
-        letter-spacing: 1px;
-    }
-    header p {
-        font-size: 1.2rem;
-        opacity: 0.9;
+        position: relative;
+        overflow: hidden;
     }
 
-    /* ---------- Navbar ---------- */
-    nav {
-        background-color: rgba(255, 255, 255, 0.8);
-        backdrop-filter: blur(10px);
-        position: sticky;
-        top: 0;
-        z-index: 100;
+    header::before {
+        content: '';
+        position: absolute;
+        width: 300px;
+        height: 300px;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 50%;
+        top: -150px;
+        right: -100px;
+    }
+
+    header::after {
+        content: '';
+        position: absolute;
+        width: 200px;
+        height: 200px;
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 50%;
+        bottom: -100px;
+        left: -50px;
+    }
+
+    .header-content {
+        position: relative;
+        z-index: 2;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    header h1 {
+        font-size: 3rem;
+        margin-bottom: 15px;
+        font-weight: 800;
+        letter-spacing: -0.5px;
+        animation: fadeInUp 1s ease;
+    }
+
+    header p {
+        font-size: 1.3rem;
+        opacity: 0.9;
+        margin-bottom: 20px;
+        animation: fadeInUp 1s ease 0.2s both;
+    }
+
+    .tag-container {
         display: flex;
         justify-content: center;
+        gap: 10px;
         flex-wrap: wrap;
-        padding: 10px 0;
-        border-bottom: 1px solid rgba(0,0,0,0.1);
-        box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        animation: fadeInUp 1s ease 0.4s both;
     }
-    nav a {
-        color: #333;
+
+    .tag {
+        background: rgba(255, 255, 255, 0.15);
+        padding: 8px 16px;
+        border-radius: 20px;
+        font-size: 0.9rem;
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    /* ---------- Navigation ---------- */
+    nav {
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(20px);
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        padding: 15px 0;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+        border-bottom: 1px solid rgba(0,0,0,0.05);
+    }
+
+    .nav-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 20px;
+    }
+
+    .nav-links {
+        display: flex;
+        gap: 30px;
+    }
+
+    .nav-links a {
+        color: var(--dark);
         text-decoration: none;
-        margin: 10px 20px;
         font-weight: 600;
+        font-size: 0.95rem;
         position: relative;
-        transition: color 0.3s ease;
+        padding: 8px 0;
+        transition: var(--transition);
     }
-    nav a::after {
-        content: "";
+
+    .nav-links a::after {
+        content: '';
         position: absolute;
+        bottom: 0;
+        left: 0;
         width: 0;
         height: 2px;
-        bottom: -3px;
-        left: 0;
-        background: #7b5dfb;
-        transition: width 0.3s;
+        background: var(--primary);
+        transition: width 0.3s ease;
     }
-    nav a:hover {
-        color: #7b5dfb;
+
+    .nav-links a:hover {
+        color: var(--primary);
     }
-    nav a:hover::after {
+
+    .nav-links a:hover::after {
         width: 100%;
     }
 
-    /* ---------- Containers ---------- */
-    .container {
-        width: 90%;
-        max-width: 1100px;
-        margin: 40px auto;
+    .mobile-menu-btn {
+        display: none;
+        background: none;
+        border: none;
+        font-size: 1.5rem;
+        color: var(--dark);
+        cursor: pointer;
     }
 
     /* ---------- Sections ---------- */
     section {
-        padding: 40px 0;
-    }
-    h2 {
-        text-align: center;
-        color: #333;
-        margin-bottom: 30px;
-        font-size: 1.8rem;
-        position: relative;
-    }
-    h2::after {
-        content: "";
-        display: block;
-        width: 60px;
-        height: 3px;
-        background: #7b5dfb;
-        margin: 10px auto 0;
-        border-radius: 10px;
+        padding: 80px 20px;
     }
 
-    /* ---------- Cards ---------- */
-    .card {
-        background: rgba(255, 255, 255, 0.8);
-        backdrop-filter: blur(10px);
-        border-radius: 15px;
-        padding: 25px;
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .section-title {
         text-align: center;
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        margin-bottom: 60px;
+        position: relative;
     }
-    .card:hover {
-        transform: translateY(-8px);
-        box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+
+    .section-title h2 {
+        font-size: 2.5rem;
+        color: var(--dark);
+        display: inline-block;
+        position: relative;
+        padding-bottom: 15px;
     }
-    .company-logo, .school-logo {
-        width: 90px;
-        height: 90px;
-        object-fit: contain;
-        border-radius: 10px;
-        margin-bottom: 15px;
+
+    .section-title h2::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80px;
+        height: 4px;
+        background: linear-gradient(90deg, var(--primary), var(--secondary));
+        border-radius: 2px;
     }
 
     /* ---------- About Section ---------- */
-    .about-me {
-        display: flex;
-        flex-wrap: wrap;
-        align-items: center;
-        gap: 40px;
-        justify-content: center;
-    }
-    .about-me .text {
-        flex: 1 1 300px;
-    }
-    .about-me .text p {
-        font-size: 1rem;
-        line-height: 1.6;
-        margin-bottom: 10px;
-    }
-    .about-me .image {
-        flex: 1 1 250px;
-        text-align: center;
-    }
-    .about-me img {
-        width: 100%;
-        border-radius: 20px;
-        box-shadow: 0 8px 16px rgba(0,0,0,0.15);
-    }
-    .about-me .icons a {
-        margin: 10px;
-        font-size: 1.5rem;
-        color: #7b5dfb;
-        transition: transform 0.3s, color 0.3s;
-    }
-    .about-me .icons a:hover {
-        transform: scale(1.2);
-        color: #4a3cdb;
-    }
-    /* ---------- Compact Grid Layout ---------- */
-    .education-section, .projects-section {
+    .about-content {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        gap: 16px;
-        justify-items: center;
-        align-items: stretch;
-    }
-
-    /* ---------- Professional Experience: Inline Dynamic Layout ---------- */
-    .experience-section {
-        display: flex;
-        justify-content: center;
-        align-items: stretch;
-        flex-wrap: nowrap;
-        gap: 25px;
-        padding: 30px 5%;
-        background: linear-gradient(180deg, #fafaff, #f6f7ff);
-    }
-
-    .experience-section .card {
-        flex: 1 1 0;
-        max-width: 280px;
-        min-width: 240px;
-        background: white;
-        border-radius: 16px;
-        padding: 25px 20px;
-        text-align: center;
-        box-shadow: 0 6px 16px rgba(123, 93, 251, 0.1);
-        border: 1px solid rgba(123, 93, 251, 0.08);
-        transition: all 0.35s ease;
-        display: flex;
-        flex-direction: column;
+        grid-template-columns: 1fr 1fr;
+        gap: 60px;
         align-items: center;
-        justify-content: flex-start;
     }
 
-    .experience-section .card:hover {
-        transform: translateY(-8px);
-        box-shadow: 0 10px 24px rgba(123, 93, 251, 0.18);
-        border-color: rgba(123, 93, 251, 0.3);
-    }
-
-    .experience-section .company-logo {
-        width: 70px;
-        height: 70px;
-        object-fit: contain;
-        margin-bottom: 15px;
-        border-radius: 12px;
-        background: #fff;
-        box-shadow: 0 3px 8px rgba(0,0,0,0.08);
-        padding: 5px;
-    }
-
-    .experience-section .title {
-        font-size: 1rem;
-        font-weight: 700;
-        color: #333;
-        margin-bottom: 6px;
-    }
-
-    .experience-section .company-name {
-        font-size: 0.9rem;
-        color: #7b5dfb;
-        font-weight: 600;
-        margin-bottom: 4px;
-    }
-
-    .experience-section .duration {
-        font-size: 0.85rem;
-        color: #6b6b6b;
-        margin-bottom: 8px;
-        font-style: italic;
-    }
-
-    .experience-section .description {
-        font-size: 0.85rem;
-        color: #555;
-        line-height: 1.5;
-        margin-top: 5px;
-        max-width: 250px;
-    }
-
-    .experience-section .card:hover .title {
-        color: #5b85f6;
-        text-shadow: 0 0 8px rgba(123,93,251,0.25);
-    }
-
-    /* Responsive layout: wrap neatly when screen gets smaller */
-    @media (max-width: 1100px) {
-      .experience-section {
-        flex-wrap: wrap;
-        justify-content: center;
-      }
-    }
-
-
-
-
-    /* ---------- Card Size Adjustment ---------- */
-    .card, .project-card {
-        background: rgba(255, 255, 255, 0.85);
-        backdrop-filter: blur(8px);
-        border-radius: 12px;
-        padding: 18px 20px;
-        text-align: center;
-        max-width: 350px;
-        width: 100%;
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-        box-shadow: 0 3px 8px rgba(0,0,0,0.08);
-    }
-
-    .card:hover, .project-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 6px 15px rgba(0,0,0,0.12);
-    }
-
-    /* Logo sizes look uniform */
-    .company-logo, .school-logo, .project-logo-image {
-        width: 70px;
-        height: 70px;
-        object-fit: contain;
-        margin-bottom: 10px;
-    }
-
-    /* Project details look neater */
-    .project-details h3 {
-        margin: 8px 0;
-        font-size: 1rem;
-        color: #333;
-    }
-    .project-details p {
-        font-size: 0.9rem;
-        color: #666;
-    }
-
-    /* ---------- Buttons ---------- */
-    .github-button, .pdf-button {
-        display: inline-block;
-        margin-top: 15px;
-        padding: 10px 20px;
-        background: linear-gradient(90deg, #7b5dfb, #5b85f6);
-        color: #fff;
-        border-radius: 8px;
-        font-weight: 600;
-        text-decoration: none;
-        transition: transform 0.2s, box-shadow 0.2s;
-    }
-    .github-button:hover, .pdf-button:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 6px 12px rgba(123,93,251,0.3);
-    }
-
-    /* ---------- Skills Section ---------- */
-    .skills-container {
-        background: rgba(255,255,255,0.85);
-        border-radius: 15px;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-        padding: 30px;
-        margin-top: 40px;
-    }
-    .skill-title {
-        font-weight: 700;
-        color: #333;
-        padding: 10px 0;
-        cursor: pointer;
+    .profile-image {
         position: relative;
-    }
-    .skill-title::after {
-        content: "▼";
-        float: right;
-        transition: transform 0.3s;
-    }
-    .skill-item[open] .skill-title::after {
-        transform: rotate(180deg);
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: var(--shadow);
+        transition: var(--transition);
     }
 
-    /* ---------- Detailed Experience Redesign ---------- */
-    .detailed-experience {
-      display: flex;
-      flex-direction: column;
-      gap: 25px;
-      position: relative;
-      margin: 40px auto;
-      padding-left: 20px;
-      max-width: 800px;
+    .profile-image:hover {
+        transform: translateY(-10px);
     }
 
-    .detailed-experience::before {
-      content: "";
-      position: absolute;
-      left: 8px;
-      top: 0;
-      bottom: 0;
-      width: 3px;
-      background: linear-gradient(180deg, #7b5dfb, #5b85f6);
-      border-radius: 2px;
+    .profile-image img {
+        width: 100%;
+        height: auto;
+        display: block;
+        transition: transform 0.5s ease;
     }
 
-    .experience-card {
-      position: relative;
-      background: rgba(255, 255, 255, 0.9);
-      border-radius: 12px;
-      padding: 18px 20px;
-      box-shadow: 0 3px 8px rgba(0,0,0,0.08);
-      transition: all 0.3s ease;
-      border-left: 4px solid #7b5dfb;
+    .profile-image:hover img {
+        transform: scale(1.05);
     }
 
-    .experience-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 8px 18px rgba(0,0,0,0.12);
+    .about-text h3 {
+        font-size: 2rem;
+        margin-bottom: 20px;
+        color: var(--dark);
+    }
+
+    .about-text p {
+        margin-bottom: 20px;
+        color: var(--gray);
+        font-size: 1.05rem;
+    }
+
+    .contact-info {
+        display: flex;
+        gap: 20px;
+        margin-top: 30px;
+        flex-wrap: wrap;
+    }
+
+    .contact-item {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 10px 20px;
+        background: white;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        transition: var(--transition);
+    }
+
+    .contact-item:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    }
+
+    .contact-item i {
+        color: var(--primary);
+        font-size: 1.2rem;
+    }
+
+    /* ---------- Timeline Layout ---------- */
+    .timeline-container {
+        position: relative;
+        max-width: 1000px;
+        margin: 0 auto;
+    }
+
+    .timeline-container::before {
+        content: '';
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 2px;
+        height: 100%;
+        background: linear-gradient(to bottom, var(--primary), var(--secondary));
+    }
+
+    .timeline-item {
+        position: relative;
+        margin-bottom: 60px;
+        width: 100%;
+    }
+
+    .timeline-item:last-child {
+        margin-bottom: 0;
+    }
+
+    .timeline-item::before {
+        content: '';
+        position: absolute;
+        left: 50%;
+        top: 30px;
+        transform: translateX(-50%);
+        width: 16px;
+        height: 16px;
+        background: var(--primary);
+        border-radius: 50%;
+        z-index: 2;
+        border: 3px solid white;
+        box-shadow: 0 0 0 4px var(--primary);
+    }
+
+    .timeline-date {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        top: -25px;
+        background: var(--primary);
+        color: white;
+        padding: 6px 20px;
+        border-radius: 20px;
+        font-weight: 600;
+        font-size: 0.9rem;
+        white-space: nowrap;
+        z-index: 3;
+        box-shadow: 0 4px 12px rgba(123, 93, 251, 0.3);
+    }
+
+    .timeline-content {
+        width: calc(50% - 40px);
+        padding: 20px;
+    }
+
+    .timeline-item:nth-child(odd) .timeline-content {
+        margin-left: auto;
+    }
+
+    .timeline-item:nth-child(even) .timeline-content {
+        margin-right: auto;
+    }
+
+    /* Experience Cards */
+    .exp-card {
+        background: white;
+        border-radius: 15px;
+        padding: 30px;
+        box-shadow: var(--shadow);
+        transition: var(--transition);
+        border-left: 4px solid var(--primary);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .exp-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 5px;
+        background: linear-gradient(90deg, var(--primary), var(--secondary));
+    }
+
+    .exp-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
     }
 
     .exp-header {
-      display: flex;
-      align-items: center;
-      gap: 15px;
-      margin-bottom: 10px;
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        margin-bottom: 20px;
     }
 
     .exp-logo {
-      width: 55px;
-      height: 55px;
-      object-fit: contain;
-      border-radius: 10px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-      background: #fff;
+        width: 60px;
+        height: 60px;
+        border-radius: 12px;
+        object-fit: cover;
+        background: white;
+        padding: 10px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
     }
 
-    .exp-header h4 {
-      margin: 0;
-      color: #333;
-      font-size: 1rem;
+    .exp-details h4 {
+        font-size: 1.2rem;
+        color: var(--dark);
+        margin-bottom: 5px;
     }
 
     .exp-company {
-      color: #7b5dfb;
-      font-weight: 600;
-      font-size: 0.9rem;
-      margin: 2px 0;
+        color: var(--primary);
+        font-weight: 600;
+        margin-bottom: 5px;
     }
 
     .exp-duration {
-      color: #777;
-      font-size: 0.85rem;
-      font-style: italic;
+        color: var(--gray);
+        font-size: 0.9rem;
     }
 
-    .experience-card ul {
-      margin: 8px 0 0;
-      padding-left: 18px;
-      color: #555;
-      font-size: 0.9rem;
-      line-height: 1.5;
+    .exp-description {
+        color: var(--gray);
+        line-height: 1.7;
     }
 
-    @media (max-width: 768px) {
-      .detailed-experience {
-        padding-left: 10px;
-      }
-      .exp-header {
-        flex-direction: row;
-        align-items: flex-start;
-      }
-      .exp-logo {
-        width: 45px;
-        height: 45px;
-      }
+    .exp-description ul {
+        padding-left: 20px;
+        margin-top: 15px;
+    }
+
+    .exp-description li {
+        margin-bottom: 8px;
+        position: relative;
+    }
+
+    .exp-description li::marker {
+        color: var(--primary);
+    }
+
+    /* Achievement Highlight */
+    .achievement-highlight {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 15px;
+        color: var(--primary);
+        font-weight: 600;
+        font-size: 1.1rem;
+    }
+
+    .achievement-highlight i {
+        color: #ffd700;
+        font-size: 1.2rem;
+    }
+
+    /* Tech Stack in Experience Cards */
+    .exp-description .tech-stack {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 20px;
+        padding-top: 15px;
+        border-top: 1px solid rgba(0, 0, 0, 0.1);
+    }
+
+    /* ---------- Personal Section ---------- */
+    .personal-gallery {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 50px;
+        align-items: center;
+    }
+
+    .photo-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+
+    .photo-item {
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: var(--shadow);
+        transition: var(--transition);
+        position: relative;
+    }
+
+    .photo-item:hover {
+        transform: translateY(-10px);
+    }
+
+    .photo-item img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+    }
+
+    .photo-item:hover img {
+        transform: scale(1.1);
+    }
+
+    .photo-caption {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: rgba(0, 0, 0, 0.7);
+        color: white;
+        padding: 10px;
+        margin: 0;
+        font-size: 0.9rem;
+        text-align: center;
+    }
+
+    .fun-facts {
+        background: white;
+        padding: 25px;
+        border-radius: 15px;
+        margin-top: 30px;
+        box-shadow: var(--shadow);
+    }
+
+    .facts-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+        margin-top: 20px;
+    }
+
+    .fact {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 10px;
+        background: rgba(123, 93, 251, 0.05);
+        border-radius: 10px;
+    }
+
+    .fact i {
+        color: var(--primary);
+    }
+
+    /* ---------- Skills Section ---------- */
+    .skills-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 25px;
+    }
+
+    .skill-category {
+        background: white;
+        border-radius: 15px;
+        padding: 30px;
+        box-shadow: var(--shadow);
+        transition: var(--transition);
+    }
+
+    .skill-category:hover {
+        transform: translateY(-5px);
+    }
+
+    .skill-category h3 {
+        color: var(--dark);
+        margin-bottom: 20px;
+        font-size: 1.3rem;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .skill-category h3 i {
+        color: var(--primary);
+    }
+
+    .skill-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .skill-item {
+        background: linear-gradient(135deg, var(--primary), var(--secondary));
+        color: white;
+        padding: 8px 16px;
+        border-radius: 20px;
+        font-size: 0.9rem;
+        font-weight: 500;
+        transition: var(--transition);
+        cursor: default;
+    }
+
+    .skill-item:hover {
+        transform: scale(1.05);
+        box-shadow: 0 5px 15px rgba(123, 93, 251, 0.3);
+    }
+
+    /* ---------- Projects Section ---------- */
+    .projects-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 30px;
+    }
+
+    .project-card {
+        background: white;
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: var(--shadow);
+        transition: var(--transition);
+        display: flex;
+        flex-direction: column;
+    }
+
+    .project-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+    }
+
+    .project-image {
+        height: 200px;
+        overflow: hidden;
+    }
+
+    .project-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+    }
+
+    .project-card:hover .project-image img {
+        transform: scale(1.1);
+    }
+
+    .project-content {
+        padding: 30px;
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .project-content h3 {
+        font-size: 1.3rem;
+        color: var(--dark);
+        margin-bottom: 15px;
+    }
+
+    .project-content p {
+        color: var(--gray);
+        margin-bottom: 20px;
+        flex-grow: 1;
+    }
+
+    .project-tech {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-bottom: 20px;
+    }
+
+    .tech-tag {
+        background: rgba(123, 93, 251, 0.1);
+        color: var(--primary);
+        padding: 5px 12px;
+        border-radius: 15px;
+        font-size: 0.85rem;
+        font-weight: 500;
+    }
+
+    .project-links {
+        display: flex;
+        gap: 15px;
+        margin-top: auto;
+    }
+
+    .project-link {
+        padding: 10px 20px;
+        border-radius: 8px;
+        text-decoration: none;
+        font-weight: 600;
+        transition: var(--transition);
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .project-link.primary {
+        background: var(--primary);
+        color: white;
+    }
+
+    .project-link.secondary {
+        background: transparent;
+        color: var(--primary);
+        border: 2px solid var(--primary);
+    }
+
+    .project-link:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 20px rgba(123, 93, 251, 0.2);
     }
 
     /* ---------- Footer ---------- */
     footer {
-        background: linear-gradient(90deg, #7b5dfb, #5b85f6);
+        background: linear-gradient(135deg, var(--dark), #2d3748);
         color: white;
-        text-align: center;
-        padding: 25px 10px;
-        font-size: 0.95rem;
-        margin-top: 50px;
+        padding: 60px 20px 30px;
     }
 
-    /* ---------- Responsive ---------- */
-    @media (max-width: 768px) {
-        .timeline-item, .timeline-item:nth-child(even), .timeline-item:nth-child(odd) {
-            width: 100%;
-            left: 0;
-            margin-bottom: 20px;
+    .footer-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 40px;
+        margin-bottom: 40px;
+    }
+
+    .footer-section h3 {
+        font-size: 1.3rem;
+        margin-bottom: 20px;
+        color: white;
+    }
+
+    .footer-section p {
+        opacity: 0.8;
+        line-height: 1.7;
+    }
+
+    .social-links {
+        display: flex;
+        gap: 15px;
+        margin-top: 20px;
+    }
+
+    .social-links a {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 50%;
+        color: white;
+        text-decoration: none;
+        transition: var(--transition);
+    }
+
+    .social-links a:hover {
+        background: var(--primary);
+        transform: translateY(-5px);
+    }
+
+    .copyright {
+        text-align: center;
+        padding-top: 30px;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        opacity: 0.7;
+        font-size: 0.9rem;
+    }
+
+    /* ---------- Animations ---------- */
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(30px);
         }
-        .about-me {
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @keyframes float {
+        0%, 100% {
+            transform: translateY(0);
+        }
+        50% {
+            transform: translateY(-10px);
+        }
+    }
+
+    .floating {
+        animation: float 3s ease-in-out infinite;
+    }
+
+    /* ---------- Back to Top Button ---------- */
+    .back-to-top {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        width: 50px;
+        height: 50px;
+        background: var(--primary);
+        color: white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        box-shadow: 0 5px 20px rgba(123, 93, 251, 0.3);
+        transition: var(--transition);
+        opacity: 0;
+        visibility: hidden;
+        z-index: 1000;
+    }
+
+    .back-to-top.visible {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .back-to-top:hover {
+        background: var(--secondary);
+        transform: translateY(-5px);
+    }
+
+    /* ---------- Dark Mode Toggle ---------- */
+    .theme-toggle {
+        position: fixed;
+        top: 100px;
+        right: 30px;
+        width: 50px;
+        height: 50px;
+        background: white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        box-shadow: var(--shadow);
+        z-index: 1000;
+        transition: var(--transition);
+    }
+
+    .theme-toggle:hover {
+        transform: rotate(30deg);
+    }
+
+    .dark-mode {
+        --light: #1a1a2e;
+        --dark: #f8f9fb;
+        --gray: #b0b7c3;
+        background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    }
+
+    .dark-mode nav {
+        background: rgba(26, 26, 46, 0.95);
+    }
+
+    .dark-mode .exp-card,
+    .dark-mode .skill-category,
+    .dark-mode .project-card {
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    /* ---------- Responsive Design ---------- */
+    @media (max-width: 992px) {
+        .about-content {
+            grid-template-columns: 1fr;
+            gap: 40px;
+        }
+
+        .section-title h2 {
+            font-size: 2rem;
+        }
+
+        .nav-links {
+            display: none;
+        }
+
+        .mobile-menu-btn {
+            display: block;
+        }
+
+        .nav-links.active {
+            display: flex;
+            flex-direction: column;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: white;
+            padding: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+        }
+    }
+
+    @media (max-width: 768px) {
+        header h1 {
+            font-size: 2.2rem;
+        }
+
+        header p {
+            font-size: 1.1rem;
+        }
+
+        section {
+            padding: 60px 20px;
+        }
+
+        .projects-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .exp-card {
+            padding: 20px;
+        }
+
+        .project-card {
+            margin-bottom: 30px;
+        }
+
+        /* Responsive Timeline */
+        .timeline-container::before {
+            left: 30px;
+        }
+
+        .timeline-item::before {
+            left: 30px;
+        }
+
+        .timeline-date {
+            left: 30px;
+            top: -20px;
+            font-size: 0.85rem;
+            padding: 5px 15px;
+        }
+
+        .timeline-content {
+            width: calc(100% - 60px);
+            margin-left: 60px !important;
+            margin-right: 0 !important;
+            padding: 15px;
+        }
+
+        .exp-header {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 15px;
+        }
+
+        .exp-logo {
+            width: 50px;
+            height: 50px;
+        }
+
+        /* Personal Section Responsive */
+        .personal-gallery {
+            grid-template-columns: 1fr;
+        }
+
+        .facts-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .photo-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    @media (max-width: 480px) {
+        header {
+            padding: 60px 20px 40px;
+        }
+
+        header h1 {
+            font-size: 1.8rem;
+        }
+
+        .section-title h2 {
+            font-size: 1.6rem;
+        }
+
+        .contact-info {
             flex-direction: column;
         }
+
+        .project-links {
+            flex-direction: column;
+        }
+
+        /* Timeline Mobile */
+        .timeline-content {
+            width: calc(100% - 50px);
+            margin-left: 50px !important;
+        }
+
+        .timeline-date {
+            left: 25px;
+            font-size: 0.8rem;
+            padding: 4px 12px;
+        }
+
+        .timeline-item::before {
+            left: 25px;
+            width: 14px;
+            height: 14px;
+        }
     }
-
-
-
-
     </style>
-    <!-- Link to Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <!-- Link to Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
+    <!-- Theme Toggle -->
+    <div class="theme-toggle" id="themeToggle">
+        <i class="fas fa-moon"></i>
+    </div>
 
-<nav>
-    <a href="#home">ABOUT ME</a>
-    <a href="#experiences">PROFESSIONAL EXPERIENCE</a>
-    <a href="#education">EDUCATION</a>
-    <a href="#resume">DETAILED EXPERIENCES</a>
-    <a href="#skills">SKILLS</a>
-    <a href="#projects">PROJECTS</a>
-    <a href="https://medium.com/@poojaniranjanshetty/my-day-as-software-engineer-trainee-in-d-nitro-team-kpn-5cf0cb569b75" target="_blank">BLOG</a>
-</nav>
-
-<header>
-    <h1>Pooja Niranjan Shetty</h1>
-    <p> Software Engineer (Data) | DevOps Engineer </p>
-</header>
-
-<div class="container">
-    <section id="home">
-        <div class="about-me">
-            <div class="text">
-            <h2>ABOUT ME</h2>
-                <p> Hi👋, I'm Pooja Shetty — a 28-year-old Software Engineer, wife, and proud mom to a beautiful baby girl.</p>
-
-             <p> I’m originally from Bangalore, India, and spent 3 amazing years living and working in the Netherlands. Professionally, I have a strong passion for data engineering and DevOps. Over the years, I’ve worked extensively with technologies such as Python, JavaScript, SQL, and AWS. My daily tech stack also included Pandas, CI/CD pipelines, Docker, Jenkins, Artifactory, Git, Grafana, Splunk, and various testing frameworks (unit, smoke, and functional testing).</p>
-             <p>Currently, I'm on a maternity break after welcoming our daughter in February 2025. I made the decision to return to India during my 7th month of pregnancy due to limited support abroad and some family health concerns. Traveling beyond that point was medically restricted, so I relocated early in 7th month to ensure a safe delivery and better care.</p>
-
-               <p> Outside of work, I'm an avid traveler who has explored 24 countries so far. I truly enjoy immersing myself in different cultures, meeting people with diverse perspectives, and building meaningful connections around the world.
-            </p>
-
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">
+                <h3>Pooja Shetty</h3>
             </div>
-            <div class="image">
+            <div class="nav-links" id="navLinks">
+                <a href="#home">About</a>
+                <a href="#personal">Personal life</a>
+                <a href="#experience">Experience</a>
+                <a href="#skills">Skills</a>
+                <a href="#projects">Projects</a>
+                <a href="#education">Education</a>
+                <a href="https://medium.com/@poojaniranjanshetty" target="_blank">Blog</a>
+                <a href="#contact">Contact</a>
+            </div>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <header id="home">
+        <div class="header-content">
+            <h1>Pooja Niranjan Shetty</h1>
+            <p>Software Engineer (Data) | DevOps Engineer</p>
+            <div class="tag-container">
+                <span class="tag">Python Developer</span>
+                <span class="tag">DevOps Engineer</span>
+                <span class="tag">Data Engineer</span>
+                <span class="tag">Cloud Enthusiast</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- About Section -->
+    <section id="about" class="container">
+        <div class="section-title">
+            <h2>About Me</h2>
+        </div>
+        <div class="about-content">
+            <div class="profile-image floating">
                 <img src="static/assets/profile-photo.jpeg" alt="Pooja Niranjan Shetty">
-                <p class="location">Bangalore, India</p>
-                <div class="icons">
+            </div>
+            <div class="about-text">
+            <h3>Hi👋, I'm Pooja Shetty</h3>
+            <p>I'm a 28-year-old Software Engineer, wife, and proud mom to a beautiful baby girl born in February 2025.</p>
+            <p>Originally from Bangalore, India, I spent 3 amazing years living and working in the Netherlands as a Software Engineer (Data | DevOps) at KPN.</p>
+            <p> Professionally, I'm specialized in Data engineering and DevOps. Over the years, I’ve worked extensively with technologies such as Python, JavaScript, SQL, and AWS. My daily tech stack also included Pandas, CI/CD pipelines, Docker, Jenkins, Artifactory, Git, Grafana, Splunk, and various testing frameworks (unit, smoke, and functional testing).</p>
+            <p> I made the decision to return to India during my seventh month of pregnancy due to limited support abroad and family health concerns. Traveling beyond that point was medically restricted, so I relocated early to ensure a safe delivery and better care. I am now ready to return to work and am actively seeking opportunities where I can leverage my skills and experience.</p>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Bangalore, India</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>poojaniranjanshetty@gmail.com</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Personal Life Section -->
+    <section id="personal" class="container">
+        <div class="section-title">
+            <h2>Beyond the Code</h2>
+            <p style="text-align: center; margin-top: 10px; color: var(--gray);">A glimpse into my life outside work</p>
+        </div>
+
+        <div class="personal-gallery">
+            <div class="personal-intro">
+                <p>When I'm not building software, I'm building memories with my family. I became a mom in February 2025, and it's been the most incredible journey of my life.</p>
+                <p>I believe in bringing the same dedication and problem-solving mindset from my professional life into parenting and personal growth.</p>
+                <div class="fun-facts">
+                    <h4><i class="fas fa-star"></i> Fun Facts About Me</h4>
+                    <div class="facts-grid">
+                        <div class="fact">
+                            <i class="fas fa-baby"></i>
+                            <span>New mom to a beautiful baby girl</span>
+                        </div>
+                        <div class="fact">
+                            <i class="fas fa-laptop-code"></i>
+                            <span>Passionate about exploring new tools & technologies through side projects</span>
+                        </div>
+                        <div class="fact">
+                            <i class="fas fa-hiking"></i>
+                            <span>Enjoy weekend hikes and nature walks</span>
+                        </div>
+                        <div class="fact">
+                            <i class="fas fa-book-reader"></i>
+                            <span>Avid reader of tech blogs and parenting books</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="family-photos">
+                <div class="photo-grid">
+                    <div class="photo-item">
+                        <img src="static/assets/family.JPG" alt="Family time" onerror="this.style.display='none'">
+                        <p class="photo-caption">Family moments ❤️</p>
+                    </div>
+                    <div class="photo-item">
+                        <img src="static/assets/sunshine.JPG" alt="My baby" onerror="this.style.display='none'">
+                        <p class="photo-caption">My little sunshine ☀️</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" style="background: rgba(123, 93, 251, 0.03);">
+        <div class="container">
+            <div class="section-title">
+                <h2>Professional Experience</h2>
+            </div>
+
+            <div class="timeline-container">
+                <!-- KPN Experience -->
+                <div class="timeline-item">
+                    <div class="timeline-date">
+                        <span>Apr 2022 – Oct 2024</span>
+                    </div>
+                    <div class="timeline-content">
+                        <div class="exp-card">
+                            <div class="exp-header">
+                                <img src="static/assets/kpn-logo.png" alt="KPN" class="exp-logo">
+                                <div class="exp-details">
+                                    <h4>Software Engineer (DevOps | Data)</h4>
+                                    <div class="exp-company">KPN, Netherlands</div>
+                                    <div class="exp-duration">Full-time</div>
+                                </div>
+                            </div>
+                            <div class="exp-description">
+                                <div class="achievement-highlight">
+                                    <i class="fas fa-trophy"></i>
+                                    <span>Key Achievements</span>
+                                </div>
+                                <ul>
+                                    <li><strong>Geolocation Service:</strong> Engineered "Maxmind" geolocation service (Python, FastAPI) validating 1M+ daily requests, ensuring 100% compliance with EU content broadcasting regulations</li>
+                                    <li><strong>Streaming Integrity:</strong> Developed "Jafar" system eliminating duplicate playback across devices, reducing customer complaints by 25%</li>
+                                    <li><strong>Automation:</strong> Created "Nasbclean" for VM storage cleanup, cutting manual maintenance by 40+ hours/month and improving storage efficiency by 15%</li>
+                                    <li><strong>CI/CD Migration:</strong> Spearheaded migration from GitLab/Jenkins to GitHub Actions, reducing deployment cycles from 2 days to 8 hours</li>
+                                    <li><strong>Infrastructure Management:</strong> Managed 100+ Jenkins instances across 12 EC2 servers, improving CI/CD pipeline reliability</li>
+                                    <li><strong>Developer Tools:</strong> Engineered "Console" front-end (Vue.js/Django) and "Katka-development" orchestration tool, reducing manual setup time by 50%</li>
+                                </ul>
+                                <div class="tech-stack">
+                                    <span class="tech-tag">Python</span>
+                                    <span class="tech-tag">FastAPI</span>
+                                    <span class="tech-tag">AWS</span>
+                                    <span class="tech-tag">Jenkins</span>
+                                    <span class="tech-tag">Vue.js</span>
+                                    <span class="tech-tag">Django</span>
+                                    <span class="tech-tag">GitHub Actions</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Enrich Technosoft Experience -->
+                <div class="timeline-item">
+                    <div class="timeline-date">
+                        <span>Nov 2020 – Apr 2021</span>
+                    </div>
+                    <div class="timeline-content">
+                        <div class="exp-card">
+                            <div class="exp-header">
+                                <img src="static/assets/enrich-technosoft.jpg" alt="Enrich Technosoft" class="exp-logo">
+                                <div class="exp-details">
+                                    <h4>ASP.NET Developer</h4>
+                                    <div class="exp-company">Enrich Technosoft, Bangalore</div>
+                                    <div class="exp-duration">Full-time</div>
+                                </div>
+                            </div>
+                            <div class="exp-description">
+                                <div class="achievement-highlight">
+                                    <i class="fas fa-trophy"></i>
+                                    <span>Key Achievements</span>
+                                </div>
+                                <ul>
+                                    <li><strong>Full-Stack Development:</strong> Engineered responsive front-end for hotel, car rental, and flight booking modules with multilingual support (English/Arabic)</li>
+                                    <li><strong>API Development:</strong> Developed RESTful APIs for booking transactions and payment processing, ensuring 99.9% uptime</li>
+                                    <li><strong>Payment Integration:</strong> Integrated PCI-compliant payment gateways, reducing transaction failures and boosting customer trust</li>
+                                    <li><strong>Database Optimization:</strong> Designed and optimized SQL Server databases for bookings and user management, improving query performance by 30%</li>
+                                </ul>
+                                <div class="tech-stack">
+                                    <span class="tech-tag">ASP.NET</span>
+                                    <span class="tech-tag">SQL Server</span>
+                                    <span class="tech-tag">REST APIs</span>
+                                    <span class="tech-tag">JavaScript</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Capital Computer Experience -->
+                <div class="timeline-item">
+                    <div class="timeline-date">
+                        <span>Jul 2018 – Oct 2020</span>
+                    </div>
+                    <div class="timeline-content">
+                        <div class="exp-card">
+                            <div class="exp-header">
+                                <img src="static/assets/capital-computer.jpeg" alt="Capital Computer" class="exp-logo">
+                                <div class="exp-details">
+                                    <h4>Programming Trainer</h4>
+                                    <div class="exp-company">Capital Computers, Bangalore</div>
+                                    <div class="exp-duration">Full-time</div>
+                                </div>
+                            </div>
+                            <div class="exp-description">
+                                <div class="achievement-highlight">
+                                    <i class="fas fa-trophy"></i>
+                                    <span>Key Achievements</span>
+                                </div>
+                                <ul>
+                                    <li><strong>Curriculum Development:</strong> Designed and delivered comprehensive programming curriculum across 8+ technologies (C, C++, Java, Python, JavaScript, SQL, HTML/CSS)</li>
+                                    <li><strong>Student Mentorship:</strong> Mentored 100+ college students through hands-on coding exercises and real-world projects</li>
+                                    <li><strong>Career Development:</strong> Implemented assessments, certifications, and career guidance programs, boosting student placement success</li>
+                                    <li><strong>Practical Training:</strong> Conducted project-based learning sessions, improving student problem-solving abilities and industry readiness</li>
+                                </ul>
+                                <div class="tech-stack">
+                                    <span class="tech-tag">Python</span>
+                                    <span class="tech-tag">Java</span>
+                                    <span class="tech-tag">JavaScript</span>
+                                    <span class="tech-tag">C/C++</span>
+                                    <span class="tech-tag">SQL</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="container">
+        <div class="section-title">
+            <h2>Technical Skills</h2>
+        </div>
+        <div class="skills-grid">
+            <div class="skill-category">
+                <h3><i class="fas fa-code"></i> Programming</h3>
+                <div class="skill-list">
+                    <span class="skill-item">Python</span>
+                    <span class="skill-item">JavaScript</span>
+                    <span class="skill-item">SQL</span>
+                    <span class="skill-item">Django</span>
+                    <span class="skill-item">Vue.js</span>
+                    <span class="skill-item">FastAPI</span>
+                </div>
+            </div>
+
+            <div class="skill-category">
+                <h3><i class="fas fa-cloud"></i> DevOps & Cloud</h3>
+                <div class="skill-list">
+                    <span class="skill-item">AWS</span>
+                    <span class="skill-item">Docker</span>
+                    <span class="skill-item">Kubernetes</span>
+                    <span class="skill-item">Jenkins</span>
+                    <span class="skill-item">GitHub Actions</span>
+                    <span class="skill-item">Terraform</span>
+                </div>
+            </div>
+
+            <div class="skill-category">
+                <h3><i class="fas fa-database"></i> Data Engineering</h3>
+                <div class="skill-list">
+                    <span class="skill-item">Pandas</span>
+                    <span class="skill-item">PySpark</span>
+                    <span class="skill-item">Databricks</span>
+                    <span class="skill-item">Redis</span>
+                    <span class="skill-item">PostgreSQL</span>
+                    <span class="skill-item">ETL Pipelines</span>
+                </div>
+            </div>
+
+            <div class="skill-category">
+                <h3><i class="fas fa-tools"></i> Tools</h3>
+                <div class="skill-list">
+                    <span class="skill-item">Git</span>
+                    <span class="skill-item">Jira</span>
+                    <span class="skill-item">Confluence</span>
+                    <span class="skill-item">Postman</span>
+                    <span class="skill-item">Grafana</span>
+                    <span class="skill-item">Splunk</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" style="background: rgba(123, 93, 251, 0.03);">
+        <div class="container">
+            <div class="section-title">
+                <h2>Featured Projects</h2>
+            </div>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="static/assets/maxmind.png" alt="Maxmind Geolocation">
+                    </div>
+                    <div class="project-content">
+                        <h3>Maxmind IP Geolocation Service</h3>
+                        <p>High-performance geolocation service using Redis for IP address lookups, processing 1M+ daily requests with Z-order indexing for lightning-fast queries.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Redis</span>
+                            <span class="tech-tag">FastAPI</span>
+                            <span class="tech-tag">AWS</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://www.maxmind.com" target="_blank" class="project-link primary">
+                                <i class="fas fa-external-link-alt"></i> Live Demo
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="static/assets/numbeo.png" alt="Numbeo Scraper">
+                    </div>
+                    <div class="project-content">
+                        <h3>Numbeo Data Scraper</h3>
+                        <p>Scalable web scraper for collecting cost-of-living data from Numbeo using Scrapy, with data processing and storage capabilities.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Scrapy</span>
+                            <span class="tech-tag">PostgreSQL</span>
+                            <span class="tech-tag">Docker</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/poojanshetty/scrapy-numbeo" target="_blank" class="project-link primary">
+                                <i class="fab fa-github"></i> Code
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="static/assets/ai_translator.jpeg" alt="Live Translator">
+                    </div>
+                    <div class="project-content">
+                        <h3>Live Language Translator</h3>
+                        <p>Real-time speech-to-speech translation application using Google's APIs with multilingual support and intuitive interface.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Streamlit</span>
+                            <span class="tech-tag">Google API</span>
+                            <span class="tech-tag">NLP</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://huggingface.co/spaces/PoojaShetty/live_language_translator" target="_blank" class="project-link primary">
+                                <i class="fas fa-external-link-alt"></i> Demo
+                            </a>
+                            <a href="https://github.com/poojanshetty/live_language_translator" target="_blank" class="project-link secondary">
+                                <i class="fab fa-github"></i> Code
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" class="container">
+        <div class="section-title">
+            <h2>Education</h2>
+        </div>
+        <div class="experience-grid">
+            <div class="exp-card">
+                <div class="exp-header">
+                    <img src="static/assets/kle.jpg" alt="KLE College" class="exp-logo">
+                    <div class="exp-details">
+                        <h4>Master of Computer Applications</h4>
+                        <div class="exp-company">KLE Nijalingappa College</div>
+                        <div class="exp-duration">2016 - 2018</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="exp-card">
+                <div class="exp-header">
+                    <img src="static/assets/vasavi.jpeg" alt="Vasavi College" class="exp-logo">
+                    <div class="exp-details">
+                        <h4>Bachelor of Computer Applications</h4>
+                        <div class="exp-company">Vasavi College</div>
+                        <div class="exp-duration">2013 - 2016</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <footer id="contact">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Let's Connect</h3>
+                <p>I'm always open to discussing new opportunities, interesting projects, or just chatting about tech!</p>
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/in/pooja-shetty-027b46177/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://github.com/poojanshetty" target="_blank"><i class="fab fa-github"></i></a>
+                    <a href="https://medium.com/@poojaniranjanshetty" target="_blank"><i class="fab fa-medium"></i></a>
                     <a href="mailto:poojaniranjanshetty@gmail.com"><i class="fas fa-envelope"></i></a>
-                    <a href="https://www.linkedin.com/in/pooja-shetty-027b46177/"><i class="fab fa-linkedin"></i></a>
-                    <a href="https://github.com/poojanshetty"><i class="fab fa-github"></i></a>
-                    <a href="https://www.instagram.com/pooja_n_shetty/"><i class="fab fa-instagram"></i></a>
                 </div>
             </div>
-        </div>
-    </section>
-<section id="experiences">
-<h2>PROFESSIONAL EXPERIENCE</h2>
-<div class="experience-section">
-     <div class="card">
-        <img src="static/assets/maternity.jpg" alt="Maternity" class="company-logo">
-        <p class="title">Pregnancy & Maternity Break</p>
-        <p class="duration">Oct 2024 – Present</p>
-    </div>
 
-    <div class="card">
-        <img src="static/assets/kpn-logo.png" alt="KPN" class="company-logo">
-        <p class="title">Software Engineer (DevOps | Data)</p>
-        <p class="company-name">KPN, Netherlands</p>
-        <p class="duration">Apr 2022 – Oct 2024</p>
-    </div>
-
-     <div class="card">
-        <img src="static/assets/enrich-technosoft.jpg" alt="Enrich Technosoft" class="company-logo">
-        <p class="title">ASP.NET Developer</p>
-         <p class="company-name">Enrich Technosoft, Bangalore</p>
-        <p class="duration">Nov 2020 – Apr 2021</p>
-    </div>
-
-    <div class="card">
-        <img src="static/assets/capital-computer.jpeg" alt="Capital Computer" class="company-logo">
-        <p class="title">Programming Trainer</p>
-        <p class="company-name">Capital Computers, Bangalore</p>
-        <p class="duration">Jul 2018 – Oct 2020</p>
-    </div>
-</div>
-</section>
-
-<section id="education">
-<h2>EDUCATION</h2>
-<div class="education-section">
-
-    <div class="card">
-        <img src="static/assets/kle.jpg" alt="KLE Nijalingappa College" class="school-logo">
-        <p class="title">Masters</p>
-        <p class="description">Computer Applications</p>
-    </div>
-
-    <div class="card">
-        <img src="static/assets/vasavi.jpeg" alt="Vasavi College" class="school-logo">
-        <p class="title">Bachelors</p>
-        <p class="description">Computer Applications</p>
-    </div>
-
-</div>
-</section>
-
-    <section id="resume">
-        <h2>DETAILED EXPERIENCES</h2>
-        <div class="detailed-experience">
-          <div class="experience-card">
-            <div class="exp-header">
-              <img src="static/assets/maternity.jpg" alt="Maternity" class="exp-logo">
-              <div>
-                <h4>Pregnancy & Maternity Break</h4>
-                <p class="exp-company">Bangalore, India</p>
-                <p class="exp-duration">Oct 2024 – Present</p>
-              </div>
-            </div>
-            <ul>
-              <li>Relocated to Bangalore in my 7th month pregnancy due to family reasons and maternity support.</li>
-            </ul>
-          </div>
-
-          <div class="experience-card">
-            <div class="exp-header">
-              <img src="static/assets/kpn-logo.png" alt="KPN" class="exp-logo">
-              <div>
-                <h4>Software Engineer (DevOps | Data)</h4>
-                <p class="exp-company">KPN, Amsterdam, Netherlands</p>
-                <p class="exp-duration">Apr 2022 – Oct 2024</p>
-              </div>
-            </div>
-            <ul>
-                <li>Engineered “Maxmind” geolocation service (Python, FastAPI) that validated 1M+ daily requests, ensuring 100% compliance with EU content broadcasting regulations.</li>
-                <li>Developed “Jafar” streaming integrity system that eliminated duplicate playback across devices, reducing customer complaints by 25%.</li>
-                <li>Automated VM storage cleanup with “Nasbclean”, cutting manual maintenance by 40+ hours/month and improving storage efficiency by 15%.</li>
-                <li>Spearheaded migration from GitLab/Jenkins to GitHub Actions, reducing deployment cycles from 2 days to 8 hours and improving CI/CD reliability</li>
-                <li>Managed customer operations requests through Opsgenie system</li>
-                <li>Collaborated on Reflector, TLSDB certificate renewal, and live-channel-generator, contributing to smoother live TV experiences for 500k+ users.</li>
-                <li>Engineered the “Console” front-end (Vue.js) with a Django backend, streamlining developer workflows and improving interface performance.</li>
-                <li>Developed “Katka-development” orchestration tool using Typer CLI for multi-repository management, reducing manual setup time by 50%.</li>
-                <li>Managed and optimized 100+ Jenkins instances across 12 EC2 servers, improving CI/CD pipeline reliability and uptime.</li>
-                <li>Maintained enterprise tools including Slack, Katka, LDAP, Jenkins, BitBucket, and SonarQube, ensuring seamless daily operations for developers.</li>
-                <li>Built asynchronous Python applications with automated CI/CD triggers, accelerating deployment frequency and reducing human error.</li>
-                <li>Implemented automated SNOW ticket creation and release versioning, cutting release preparation time and improving audit traceability.</li>
-
-            </ul>
-          </div>
-
-          <div class="experience-card">
-            <div class="exp-header">
-              <img src="static/assets/enrich-technosoft.jpg" alt="Enrich Technosoft" class="exp-logo">
-              <div>
-                <h4>ASP.NET Developer</h4>
-                <p class="exp-company">Enrich Technosoft, Bangalore, India</p>
-                <p class="exp-duration">Nov 2020 – Apr 2021</p>
-              </div>
-            </div>
-            <ul>
-                <li>Engineered responsive front-end for hotel, car rental, and flight booking modules, enhancing user experience across desktop and mobile devices.</li>
-                <li>Developed robust RESTful APIs for booking transactions and payment processing, ensuring 99.9% uptime and secure data handling.</li>
-                <li>Implemented multilingual support (English/Arabic), expanding portal accessibility to a wider international audience.</li>
-                <li>Integrated PCI-compliant payment gateways, reducing transaction failures and boosting customer trust.</li>
-                <li>Designed and optimized SQL Server databases for bookings and user management, improving query performance by 30%.</li>
-            </ul>
-          </div>
-
-          <div class="experience-card">
-            <div class="exp-header">
-              <img src="static/assets/capital-computer.jpeg" alt="Capital Computers" class="exp-logo">
-              <div>
-                <h4>Programming Trainer</h4>
-                <p class="exp-company">Capital Computers, Bangalore, India</p>
-                <p class="exp-duration">Jul 2018 – Oct 2020</p>
-              </div>
-            </div>
-            <ul>
-                <li>Designed and delivered comprehensive programming curriculum across C, C++, Java, Python, JavaScript, HTML/CSS, SQL, and accounting tools, enhancing student proficiency and practical skills.</li>
-                <li>Conducted hands-on coding exercises and real-world projects, improving student problem-solving abilities and project readiness.</li>
-                <li>Implemented assessments, certifications, and career guidance programs, boosting student placement success and professional development.</li>
-                <li>Mentored 100+ college students, fostering technical knowledge, critical thinking, and industry-ready skill sets.</li>
-            </ul>
-          </div>
-        </div>
-
-    </section>
-<section id="skills">
-  <h2>SKILLS</h2>
-    <div class="skills-container">
-
-        <details class="skill-item">
-            <summary class="skill-title">Programming Languages</summary>
-            <ul class="skill-details">
-                <li>Python (Django, Pandas, Pyspark, Scrapy, Pytest)</li>
-                <li>JavaScript (Vue.js)</li>
-                <li>SQL</li>
-                <li>Redis</li>
-                <li>Groovy</li>
-                <li>Ansible</li>
-                <li>Git</li>
-            </ul>
-        </details>
-
-        <details class="skill-item">
-            <summary class="skill-title">DevOps Tools</summary>
-            <ul class="skill-details">
-                <li>Jenkins</li>
-                <li>Docker</li>
-                <li>Kubernetes</li>
-                <li>Artifactory</li>
-            </ul>
-        </details>
-
-        <details class="skill-item">
-            <summary class="skill-title">Other Tools</summary>
-            <ul class="skill-details">
-                <li>Postman</li>
-                <li>Jira</li>
-                <li>ServiceNow</li>
-                <li>Selenium</li>
-            </ul>
-        </details>
-
-        <details class="skill-item">
-            <summary class="skill-title">Cloud Technologies</summary>
-            <ul class="skill-details">
-                <li>AWS</li>
-                <li>Databricks (Delta Live Tables, Workflow Jobs, Catalog)</li>
-            </ul>
-        </details>
-    </div>
-</section>
-
-<section id="projects">
-    <h2>PROJECTS</h2>
-    <div class="projects-section">
-
-        <div class="project-card">
-            <div class="project-details">
-                <div class="project-logo">
-                    <img src="static/assets/maxmind.png" alt="Maxmind" class="project-logo-image">
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <div style="display: flex; flex-direction: column; gap: 10px;">
+                    <a href="#home" style="color: white; text-decoration: none; opacity: 0.8;">Home</a>
+                    <a href="#experience" style="color: white; text-decoration: none; opacity: 0.8;">Experience</a>
+                    <a href="#projects" style="color: white; text-decoration: none; opacity: 0.8;">Projects</a>
+                    <a href="#skills" style="color: white; text-decoration: none; opacity: 0.8;">Skills</a>
                 </div>
-                <h3>Maxmind IP Address Lookup</h3>
-                <p><strong>Technologies:</strong> Redis, Python</p>
-                <p><strong>Started:</strong> Sep 2023</p>
-                <ul>
-                    <li>Maxmind maintains databases of IP address which KPN uses to classify if request is coming from EU or not.</li>
-                    <li>Old approach: Copy maxmind database in our application, but the process was slow and cumbersome.</li>
-                    <li>New approach: Load IP database in Redis using Zorder and use this for geospatial indexing for faster lookups.</li>
-                </ul>
-                <a href="https://www.maxmind.com/en/home" target="_blank" class="pdf-button">Maxmind IP Database</a>
+            </div>
+
+            <div class="footer-section">
+                <h3>Location</h3>
+                <p>Based in Bangalore, India<br>Open to remote opportunities worldwide</p>
+                <p style="margin-top: 15px;">
+                    <i class="fas fa-map-marker-alt" style="margin-right: 10px;"></i>
+                    Bangalore, India
+                </p>
             </div>
         </div>
-
-        <div class="project-card">
-            <div class="project-details">
-                <div class="project-logo">
-                    <img src="static/assets/numbeo.png" alt="Numbeo" class="project-logo-image">
-                </div>
-                <h3>Numbeo Scraper</h3>
-                <p><strong>Technologies:</strong> Python, Scrapy</p>
-                <p><strong>Started:</strong> April 2025</p>
-                <ul>
-                    <li>Developed a web scraper using Scrapy to extract data from Numbeo, a crowd-sourced database of user-contributed data about cities and countries worldwide.</li>
-                </ul>
-                <a href="https://github.com/poojanshetty/scrapy-numbeo" target="_blank" class="github-button">Code</a>
-            </div>
+        <div class="copyright">
+            <p>&copy; 2025 Pooja Niranjan Shetty. All rights reserved.</p>
         </div>
+    </footer>
 
-    </div>
-</section>
+    <!-- Back to Top Button -->
+    <a href="#" class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </a>
 
-<footer>
-    <p>&copy; 2025 Pooja Niranjan Shetty. All rights reserved.</p>
-</footer>
+    <script>
+    // Mobile Menu Toggle
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const navLinks = document.getElementById('navLinks');
 
-    <script src="static/js/script.js"></script>
+    mobileMenuBtn.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+        mobileMenuBtn.innerHTML = navLinks.classList.contains('active')
+            ? '<i class="fas fa-times"></i>'
+            : '<i class="fas fa-bars"></i>';
+    });
 
+    // Close mobile menu when clicking on a link
+    document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', () => {
+            navLinks.classList.remove('active');
+            mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+        });
+    });
+
+    // Back to Top Button
+    const backToTop = document.getElementById('backToTop');
+
+    window.addEventListener('scroll', () => {
+        if (window.pageYOffset > 300) {
+            backToTop.classList.add('visible');
+        } else {
+            backToTop.classList.remove('visible');
+        }
+    });
+
+    // Smooth Scrolling
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    });
+
+    // Theme Toggle
+    const themeToggle = document.getElementById('themeToggle');
+    const themeIcon = themeToggle.querySelector('i');
+
+    themeToggle.addEventListener('click', () => {
+        document.body.classList.toggle('dark-mode');
+        if (document.body.classList.contains('dark-mode')) {
+            themeIcon.className = 'fas fa-sun';
+        } else {
+            themeIcon.className = 'fas fa-moon';
+        }
+    });
+
+    // Animation on scroll
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.animation = 'fadeInUp 0.8s ease forwards';
+            }
+        });
+    }, observerOptions);
+
+    // Observe all cards for animation
+    document.querySelectorAll('.exp-card, .skill-category, .project-card, .timeline-item').forEach(card => {
+        observer.observe(card);
+    });
+
+    // Initialize animations
+    document.addEventListener('DOMContentLoaded', () => {
+        // Add animation classes to initial elements
+        const animatedElements = document.querySelectorAll('.section-title, .about-content > *');
+        animatedElements.forEach((el, index) => {
+            el.style.animation = `fadeInUp 0.8s ease ${index * 0.2}s both`;
+        });
+    });
+    </script>
 </body>
 </html>
