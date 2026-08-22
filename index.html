@@ -14,6 +14,7 @@
         --light: #f8f9fb;
         --gray: #6c757d;
         --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        --shadow-lg: 0 20px 60px rgba(0, 0, 0, 0.15);
         --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
     }
 
@@ -72,39 +73,77 @@
     }
         .cta-button {
         display: inline-block;
-        padding: 12px 24px;
-        margin-right: 10px;
-        border-radius: 8px;
+        padding: 14px 32px;
+        margin-right: 15px;
+        margin-bottom: 10px;
+        border-radius: 12px;
         text-decoration: none;
-        font-weight: 600;
+        font-weight: 700;
+        font-size: 1rem;
         color: white;
         background: linear-gradient(135deg, var(--primary), var(--secondary));
         transition: var(--transition);
+        position: relative;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(123, 93, 251, 0.25);
+        letter-spacing: 0.5px;
+    }
+
+    .cta-button::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+        transition: left 0.5s ease;
+    }
+
+    .cta-button:hover::before {
+        left: 100%;
     }
 
     .cta-button:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 10px 20px rgba(123, 93, 251, 0.3);
+        transform: translateY(-4px);
+        box-shadow: 0 15px 40px rgba(123, 93, 251, 0.4);
+    }
+
+    .cta-button:active {
+        transform: translateY(-2px);
     }
 
     .cta-button.secondary {
-        background: transparent;
+        background: rgba(255, 255, 255, 0.15);
         color: white;
-        border: 2px solid white;
+        border: 2px solid rgba(255, 255, 255, 0.8);
+        backdrop-filter: blur(10px);
+    }
+
+    .cta-button.secondary:hover {
+        background: rgba(255, 255, 255, 0.25);
+        border-color: white;
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
     }
     header h1 {
-        font-size: 3rem;
+        font-size: 3.5rem;
         margin-bottom: 15px;
-        font-weight: 800;
-        letter-spacing: -0.5px;
-        animation: fadeInUp 1s ease;
+        font-weight: 900;
+        letter-spacing: -1px;
+        animation: fadeInUp 0.8s ease;
+        background: linear-gradient(135deg, white, rgba(255, 255, 255, 0.8));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
     }
 
     header p {
-        font-size: 1.3rem;
-        opacity: 0.9;
+        font-size: 1.4rem;
+        opacity: 0.95;
         margin-bottom: 20px;
-        animation: fadeInUp 1s ease 0.2s both;
+        animation: fadeInUp 0.8s ease 0.15s both;
+        font-weight: 500;
+        letter-spacing: 0.3px;
     }
 
     .tag-container {
@@ -117,11 +156,19 @@
 
     .tag {
         background: rgba(255, 255, 255, 0.15);
-        padding: 8px 16px;
-        border-radius: 20px;
-        font-size: 0.9rem;
+        padding: 10px 20px;
+        border-radius: 25px;
+        font-size: 0.95rem;
         backdrop-filter: blur(10px);
-        border: 1px solid rgba(255, 255, 255, 0.2);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        font-weight: 600;
+        letter-spacing: 0.3px;
+        transition: var(--transition);
+    }
+
+    .tag:hover {
+        background: rgba(255, 255, 255, 0.25);
+        transform: translateY(-2px);
     }
 
     /* ---------- Navigation ---------- */
@@ -132,8 +179,8 @@
         top: 0;
         z-index: 1000;
         padding: 15px 0;
-        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
-        border-bottom: 1px solid rgba(0,0,0,0.05);
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.08);
     }
 
     .nav-container {
@@ -153,11 +200,12 @@
     .nav-links a {
         color: var(--dark);
         text-decoration: none;
-        font-weight: 600;
+        font-weight: 700;
         font-size: 0.95rem;
         position: relative;
         padding: 8px 0;
         transition: var(--transition);
+        letter-spacing: 0.3px;
     }
 
     .nav-links a::after {
@@ -166,8 +214,8 @@
         bottom: 0;
         left: 0;
         width: 0;
-        height: 2px;
-        background: var(--primary);
+        height: 2.5px;
+        background: linear-gradient(90deg, var(--primary), var(--secondary));
         transition: width 0.3s ease;
     }
 
@@ -205,11 +253,13 @@
     }
 
     .section-title h2 {
-        font-size: 2.5rem;
+        font-size: 2.8rem;
         color: var(--dark);
         display: inline-block;
         position: relative;
         padding-bottom: 15px;
+        font-weight: 900;
+        letter-spacing: -0.5px;
     }
 
     .section-title h2::after {
@@ -218,10 +268,11 @@
         bottom: 0;
         left: 50%;
         transform: translateX(-50%);
-        width: 80px;
-        height: 4px;
-        background: linear-gradient(90deg, var(--primary), var(--secondary));
-        border-radius: 2px;
+        width: 100px;
+        height: 5px;
+        background: linear-gradient(90deg, var(--primary), var(--secondary), var(--accent));
+        border-radius: 3px;
+        box-shadow: 0 4px 15px rgba(123, 93, 251, 0.3);
     }
 
     /* ---------- About Section ---------- */
@@ -234,14 +285,16 @@
 
     .profile-image {
         position: relative;
-        border-radius: 20px;
+        border-radius: 25px;
         overflow: hidden;
-        box-shadow: var(--shadow);
+        box-shadow: 0 20px 60px rgba(123, 93, 251, 0.25);
         transition: var(--transition);
+        border: 1px solid rgba(123, 93, 251, 0.15);
     }
 
     .profile-image:hover {
-        transform: translateY(-10px);
+        transform: translateY(-15px);
+        box-shadow: 0 30px 80px rgba(123, 93, 251, 0.35);
     }
 
     .profile-image img {
@@ -277,17 +330,20 @@
     .contact-item {
         display: flex;
         align-items: center;
-        gap: 10px;
-        padding: 10px 20px;
+        gap: 12px;
+        padding: 14px 24px;
         background: white;
-        border-radius: 10px;
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        border-radius: 12px;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
         transition: var(--transition);
+        border: 1px solid rgba(123, 93, 251, 0.1);
+        font-weight: 600;
     }
 
     .contact-item:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        transform: translateY(-6px);
+        box-shadow: 0 15px 40px rgba(123, 93, 251, 0.2);
+        border-color: rgba(123, 93, 251, 0.3);
     }
 
     .contact-item i {
@@ -369,13 +425,14 @@
     /* Experience Cards */
     .exp-card {
         background: white;
-        border-radius: 15px;
-        padding: 30px;
-        box-shadow: var(--shadow);
+        border-radius: 18px;
+        padding: 35px;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
         transition: var(--transition);
-        border-left: 4px solid var(--primary);
+        border-left: 5px solid var(--primary);
         position: relative;
         overflow: hidden;
+        border: 1px solid rgba(123, 93, 251, 0.1);
     }
 
     .exp-card::before {
@@ -385,12 +442,24 @@
         left: 0;
         width: 100%;
         height: 5px;
-        background: linear-gradient(90deg, var(--primary), var(--secondary));
+        background: linear-gradient(90deg, var(--primary), var(--secondary), var(--accent));
+    }
+
+    .exp-card::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        width: 150px;
+        height: 150px;
+        background: radial-gradient(circle, rgba(123, 93, 251, 0.05), transparent);
+        border-radius: 50%;
     }
 
     .exp-card:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        transform: translateY(-12px);
+        box-shadow: 0 25px 55px rgba(123, 93, 251, 0.18);
+        border-color: rgba(123, 93, 251, 0.25);
     }
 
     .exp-header {
@@ -462,6 +531,12 @@
         font-size: 1.2rem;
     }
 
+    .experience-block + .experience-block {
+        margin-top: 28px;
+        padding-top: 22px;
+        border-top: 1px solid rgba(0, 0, 0, 0.1);
+    }
+
     /* Tech Stack in Experience Cards */
     .exp-description .tech-stack {
         display: flex;
@@ -487,31 +562,28 @@
     }
 
     .photo-item {
-        border-radius: 15px;
+        border-radius: 18px;
         overflow: hidden;
-        box-shadow: var(--shadow);
+        box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
         transition: var(--transition);
         position: relative;
+        border: 1px solid rgba(123, 93, 251, 0.1);
     }
-
-    .dark-mode .personal-intro p {
-    color: white;
-    }
-
 
     .photo-item:hover {
-        transform: translateY(-10px);
+        transform: translateY(-12px);
+        box-shadow: 0 25px 60px rgba(123, 93, 251, 0.25);
     }
 
     .photo-item img {
         width: 100%;
         height: 200px;
         object-fit: cover;
-        transition: transform 0.5s ease;
+        transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.1);
     }
 
     .photo-item:hover img {
-        transform: scale(1.1);
+        transform: scale(1.12);
     }
 
     .photo-caption {
@@ -529,10 +601,22 @@
 
     .fun-facts {
         background: white;
-        padding: 25px;
-        border-radius: 15px;
+        padding: 30px;
+        border-radius: 18px;
         margin-top: 30px;
-        box-shadow: var(--shadow);
+        box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
+        border: 1px solid rgba(123, 93, 251, 0.1);
+        transition: var(--transition);
+    }
+
+    .fun-facts:hover {
+        box-shadow: 0 20px 60px rgba(123, 93, 251, 0.15);
+    }
+
+    .fun-facts h4 {
+        font-size: 1.3rem;
+        font-weight: 700;
+        color: var(--dark);
     }
 
     .facts-grid {
@@ -545,14 +629,22 @@
     .fact {
         display: flex;
         align-items: center;
-        gap: 10px;
-        padding: 10px;
-        background: rgba(123, 93, 251, 0.05);
-        border-radius: 10px;
+        gap: 12px;
+        padding: 12px;
+        background: linear-gradient(135deg, rgba(123, 93, 251, 0.06), rgba(91, 133, 246, 0.04));
+        border-radius: 12px;
+        border: 1px solid rgba(123, 93, 251, 0.1);
+        transition: var(--transition);
+    }
+
+    .fact:hover {
+        background: linear-gradient(135deg, rgba(123, 93, 251, 0.12), rgba(91, 133, 246, 0.08));
+        transform: translateX(4px);
     }
 
     .fact i {
         color: var(--primary);
+        font-size: 1.1rem;
     }
 
     /* ---------- Skills Section ---------- */
@@ -564,14 +656,36 @@
 
     .skill-category {
         background: white;
-        border-radius: 15px;
-        padding: 30px;
-        box-shadow: var(--shadow);
+        border-radius: 18px;
+        padding: 35px;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
         transition: var(--transition);
+        border: 1px solid rgba(123, 93, 251, 0.08);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .skill-category::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 100px;
+        height: 100px;
+        background: radial-gradient(circle, rgba(123, 93, 251, 0.1), transparent);
+        border-radius: 50%;
+        opacity: 0;
+        transition: opacity 0.3s ease;
     }
 
     .skill-category:hover {
-        transform: translateY(-5px);
+        transform: translateY(-8px);
+        box-shadow: 0 20px 50px rgba(123, 93, 251, 0.15);
+        border-color: rgba(123, 93, 251, 0.2);
+    }
+
+    .skill-category:hover::after {
+        opacity: 1;
     }
 
     .skill-category h3 {
@@ -596,17 +710,19 @@
     .skill-item {
         background: linear-gradient(135deg, var(--primary), var(--secondary));
         color: white;
-        padding: 8px 16px;
-        border-radius: 20px;
+        padding: 10px 18px;
+        border-radius: 22px;
         font-size: 0.9rem;
-        font-weight: 500;
+        font-weight: 700;
         transition: var(--transition);
         cursor: default;
+        box-shadow: 0 4px 15px rgba(123, 93, 251, 0.25);
+        letter-spacing: 0.3px;
     }
 
     .skill-item:hover {
-        transform: scale(1.05);
-        box-shadow: 0 5px 15px rgba(123, 93, 251, 0.3);
+        transform: scale(1.08) translateY(-3px);
+        box-shadow: 0 8px 25px rgba(123, 93, 251, 0.4);
     }
 
     /* ---------- Projects Section ---------- */
@@ -618,17 +734,36 @@
 
     .project-card {
         background: white;
-        border-radius: 15px;
+        border-radius: 18px;
         overflow: hidden;
-        box-shadow: var(--shadow);
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
         transition: var(--transition);
         display: flex;
         flex-direction: column;
+        position: relative;
+        border: 1px solid rgba(123, 93, 251, 0.1);
+    }
+
+    .project-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: linear-gradient(90deg, var(--primary), var(--secondary), var(--accent));
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+
+    .project-card:hover::before {
+        opacity: 1;
     }
 
     .project-card:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+        transform: translateY(-15px);
+        box-shadow: 0 30px 60px rgba(123, 93, 251, 0.2);
+        border-color: rgba(123, 93, 251, 0.3);
     }
 
     .project-image {
@@ -674,12 +809,19 @@
     }
 
     .tech-tag {
-        background: rgba(123, 93, 251, 0.1);
+        background: linear-gradient(135deg, rgba(123, 93, 251, 0.1), rgba(91, 133, 246, 0.05));
         color: var(--primary);
-        padding: 5px 12px;
-        border-radius: 15px;
-        font-size: 0.85rem;
-        font-weight: 500;
+        padding: 7px 14px;
+        border-radius: 18px;
+        font-size: 0.9rem;
+        font-weight: 600;
+        border: 1px solid rgba(123, 93, 251, 0.2);
+        transition: var(--transition);
+    }
+
+    .tech-tag:hover {
+        background: linear-gradient(135deg, rgba(123, 93, 251, 0.2), rgba(91, 133, 246, 0.15));
+        border-color: var(--primary);
     }
 
     .project-links {
@@ -689,37 +831,57 @@
     }
 
     .project-link {
-        padding: 10px 20px;
-        border-radius: 8px;
+        padding: 12px 24px;
+        border-radius: 10px;
         text-decoration: none;
-        font-weight: 600;
+        font-weight: 700;
         transition: var(--transition);
         display: flex;
         align-items: center;
         gap: 8px;
+        font-size: 0.95rem;
+        letter-spacing: 0.3px;
     }
 
     .project-link.primary {
-        background: var(--primary);
+        background: linear-gradient(135deg, var(--primary), var(--secondary));
         color: white;
+        box-shadow: 0 8px 20px rgba(123, 93, 251, 0.3);
     }
 
     .project-link.secondary {
-        background: transparent;
+        background: rgba(123, 93, 251, 0.08);
         color: var(--primary);
         border: 2px solid var(--primary);
     }
 
     .project-link:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 10px 20px rgba(123, 93, 251, 0.2);
+        transform: translateY(-4px);
+        box-shadow: 0 15px 35px rgba(123, 93, 251, 0.35);
     }
 
-    /* ---------- Footer ---------- */
+    .project-link.secondary:hover {
+        background: rgba(123, 93, 251, 0.15);
+        box-shadow: 0 10px 25px rgba(123, 93, 251, 0.2);
+    }
+
     footer {
-        background: linear-gradient(135deg, var(--dark), #2d3748);
+        background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
         color: white;
-        padding: 60px 20px 30px;
+        padding: 80px 20px 30px;
+        position: relative;
+        overflow: hidden;
+    }
+
+    footer::before {
+        content: '';
+        position: absolute;
+        width: 400px;
+        height: 400px;
+        background: radial-gradient(circle, rgba(123, 93, 251, 0.1), transparent);
+        top: -200px;
+        right: -200px;
+        border-radius: 50%;
     }
 
     .footer-content {
@@ -732,14 +894,17 @@
     }
 
     .footer-section h3 {
-        font-size: 1.3rem;
+        font-size: 1.4rem;
         margin-bottom: 20px;
         color: white;
+        font-weight: 800;
+        letter-spacing: -0.5px;
     }
 
     .footer-section p {
-        opacity: 0.8;
-        line-height: 1.7;
+        opacity: 0.85;
+        line-height: 1.8;
+        font-weight: 500;
     }
 
     .social-links {
@@ -752,18 +917,22 @@
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        width: 40px;
-        height: 40px;
-        background: rgba(255, 255, 255, 0.1);
+        width: 45px;
+        height: 45px;
+        background: rgba(255, 255, 255, 0.12);
         border-radius: 50%;
         color: white;
         text-decoration: none;
         transition: var(--transition);
+        border: 1.5px solid rgba(255, 255, 255, 0.3);
+        font-size: 1.1rem;
     }
 
     .social-links a:hover {
-        background: var(--primary);
-        transform: translateY(-5px);
+        background: linear-gradient(135deg, var(--primary), var(--secondary));
+        transform: translateY(-8px) scale(1.1);
+        border-color: rgba(255, 255, 255, 0.6);
+        box-shadow: 0 10px 30px rgba(123, 93, 251, 0.4);
     }
 
     .copyright {
@@ -791,12 +960,51 @@
             transform: translateY(0);
         }
         50% {
-            transform: translateY(-10px);
+            transform: translateY(-12px);
+        }
+    }
+
+    @keyframes glow {
+        0%, 100% {
+            box-shadow: 0 0 20px rgba(123, 93, 251, 0.4);
+        }
+        50% {
+            box-shadow: 0 0 30px rgba(123, 93, 251, 0.6);
+        }
+    }
+
+    @keyframes slideInLeft {
+        from {
+            opacity: 0;
+            transform: translateX(-50px);
+        }
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+
+    @keyframes slideInRight {
+        from {
+            opacity: 0;
+            transform: translateX(50px);
+        }
+        to {
+            opacity: 1;
+            transform: translateX(0);
         }
     }
 
     .floating {
-        animation: float 3s ease-in-out infinite;
+        animation: float 4s ease-in-out infinite;
+    }
+
+    .project-card {
+        animation: fadeInUp 0.6s ease;
+    }
+
+    .exp-card {
+        animation: fadeInUp 0.6s ease;
     }
 
     /* ---------- Back to Top Button ---------- */
@@ -804,20 +1012,21 @@
         position: fixed;
         bottom: 30px;
         right: 30px;
-        width: 50px;
-        height: 50px;
-        background: var(--primary);
+        width: 55px;
+        height: 55px;
+        background: linear-gradient(135deg, var(--primary), var(--secondary));
         color: white;
         border-radius: 50%;
         display: flex;
         align-items: center;
         justify-content: center;
         text-decoration: none;
-        box-shadow: 0 5px 20px rgba(123, 93, 251, 0.3);
+        box-shadow: 0 8px 25px rgba(123, 93, 251, 0.35);
         transition: var(--transition);
         opacity: 0;
         visibility: hidden;
         z-index: 1000;
+        font-size: 1.2rem;
     }
 
     .back-to-top.visible {
@@ -826,8 +1035,9 @@
     }
 
     .back-to-top:hover {
-        background: var(--secondary);
-        transform: translateY(-5px);
+        background: linear-gradient(135deg, var(--secondary), var(--primary));
+        transform: translateY(-8px) scale(1.1);
+        box-shadow: 0 12px 35px rgba(123, 93, 251, 0.45);
     }
 
     /* ---------- Dark Mode Toggle ---------- */
@@ -835,21 +1045,25 @@
         position: fixed;
         top: 100px;
         right: 30px;
-        width: 50px;
-        height: 50px;
+        width: 55px;
+        height: 55px;
         background: white;
         border-radius: 50%;
         display: flex;
         align-items: center;
         justify-content: center;
         cursor: pointer;
-        box-shadow: var(--shadow);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
         z-index: 1000;
         transition: var(--transition);
+        border: 1px solid rgba(123, 93, 251, 0.2);
+        font-size: 1.3rem;
+        color: var(--primary);
     }
 
     .theme-toggle:hover {
-        transform: rotate(30deg);
+        transform: rotate(30deg) scale(1.1);
+        box-shadow: 0 12px 35px rgba(123, 93, 251, 0.25);
     }
 
     .dark-mode {
@@ -1067,7 +1281,7 @@
     }
 
     iframe {
-    max-width: 100%;
+   <a href="1q"></a> max-width: 100%;
 }
     </style>
 
@@ -1107,7 +1321,7 @@
     <header id="home">
         <div class="header-content">
             <h1>Pooja Niranjan Shetty</h1>
-            <p>Software Engineer (Data) | DevOps Engineer</p>
+            <p>Software Engineer | DevOps Engineer | Data Analyst | Python Developer</p>
             <div class="tag-container">
                 <span class="tag">Python Developer</span>
                 <span class="tag">DevOps Engineer</span>
@@ -1141,7 +1355,7 @@
             </div>
             <div class="about-text">
             <h3>Hi👋, I'm Pooja Shetty</h3>
-            <p>I'm a 29-year-old Software Engineer, wife, and proud mom to a beautiful baby girl born in February 2025.</p>
+            <p>I'm a 28-year-old Software Engineer, wife, and proud mom to a beautiful baby girl born in February 2025.</p>
             <p>Originally from Bangalore, India, I spent 3 amazing years living and working in the Netherlands as a Software Engineer (Data | DevOps) at KPN.</p>
             <p> Professionally, I'm specialized in Data engineering and DevOps. Over the years, I’ve worked extensively with technologies such as Python, JavaScript, SQL, and AWS. My daily tech stack also included Pandas, CI/CD pipelines, Docker, Jenkins, Artifactory, Git, Grafana, Splunk, and various testing frameworks (unit, smoke, and functional testing).</p>
             <p> I made the decision to return to India during my seventh month of pregnancy due to limited support abroad and family health concerns. Traveling beyond that point was medically restricted, so I relocated early to ensure a safe delivery and better care. I am now ready to return to work and am actively seeking opportunities where I can leverage my skills and experience.</p>
@@ -1224,31 +1438,47 @@
                 <!-- KPN Experience -->
                 <div class="timeline-item">
                     <div class="timeline-date">
-                        <span>Apr 2022 – Oct 2024</span>
+                        <span>Apr 2022 – Apr 2025</span>
                     </div>
                     <div class="timeline-content">
                         <div class="exp-card">
                             <div class="exp-header">
                                 <img src="static/assets/kpn-logo.png" alt="KPN" class="exp-logo">
                                 <div class="exp-details">
-                                    <h4>Software Engineer (DevOps | Data)</h4>
-                                    <div class="exp-company">KPN, Netherlands</div>
+                                    <h4>Software Engineer — D-Nitro Team (DevOps | Data)</h4>
+                                    <div class="exp-company">KPN · Amsterdam, Netherlands</div>
                                     <div class="exp-duration">Full-time</div>
                                 </div>
                             </div>
                             <div class="exp-description">
-                                <div class="achievement-highlight">
-                                    <i class="fas fa-trophy"></i>
-                                    <span>Key Achievements</span>
+                                <div class="experience-block">
+                                    <div class="achievement-highlight">
+                                        <i class="fas fa-trophy"></i>
+                                        <span><a href="https://kpn.github.io/d-nitro/" target="_blank" rel="noopener noreferrer">D-Nitro Team Experience</a> · B2B (Apr 2022 – Aug 2023)</span>
+                                    </div>
+                                    <ul>
+                                        <li><strong>Developer Portal:</strong> Engineered the Console developer portal using Vue.js and Django, streamlining internal developer workflows.</li>
+                                        <li><strong>Release Automation:</strong> Developed Katka Development, a Typer CLI tool for multi-repository release orchestration, reducing manual project setup by 50%.</li>
+                                        <li><strong>Developer Platforms:</strong> Provisioned and supported Jenkins, Slack, LDAP, Bitbucket, JIRA, SonarQube, and Katka for 200+ developers.</li>
+                                        <li><strong>Infrastructure:</strong> Managed and optimized 100+ Jenkins instances across 12 AWS EC2 servers, improving CI/CD reliability and uptime.</li>
+                                        <li><strong>Workflow Automation:</strong> Implemented ServiceNow ticket creation, release versioning, and approval workflows for stronger audit traceability.</li>
+                                        <li><strong>Platform Operations:</strong> Managed Docker and Kubernetes deployments, resolved CI/CD and developer-tooling issues, and maintained runbooks and knowledge-base articles.</li>
+                                    </ul>
                                 </div>
-                                <ul>
-                                    <li><strong>Geolocation Service:</strong> Engineered "Maxmind" geolocation service (Python, FastAPI) validating 1M+ daily requests, ensuring 100% compliance with EU content broadcasting regulations</li>
-                                    <li><strong>Streaming Integrity:</strong> Developed "Jafar" system eliminating duplicate playback across devices, reducing customer complaints by 25%</li>
-                                    <li><strong>Automation:</strong> Created "Nasbclean" for VM storage cleanup, cutting manual maintenance by 40+ hours/month and improving storage efficiency by 15%</li>
-                                    <li><strong>CI/CD Migration:</strong> Spearheaded migration from GitLab/Jenkins to GitHub Actions, reducing deployment cycles from 2 days to 8 hours</li>
-                                    <li><strong>Infrastructure Management:</strong> Managed 100+ Jenkins instances across 12 EC2 servers, improving CI/CD pipeline reliability</li>
-                                    <li><strong>Developer Tools:</strong> Engineered "Console" front-end (Vue.js/Django) and "Katka-development" orchestration tool, reducing manual setup time by 50%</li>
-                                </ul>
+                                <div class="experience-block">
+                                    <div class="achievement-highlight">
+                                        <i class="fas fa-trophy"></i>
+                                        <span><a href="https://tv.kpn.com/" target="_blank" rel="noopener noreferrer">ITV Experience</a> · B2C (Aug 2023 – Apr 2025)</span>
+                                    </div>
+                                    <ul>
+                                        <li><strong>CI/CD Migration:</strong> Spearheaded migration from GitLab/Jenkins to GitHub Actions, reducing deployment cycles from 2 days to 8 hours.</li>
+                                        <li><strong>Geolocation Service:</strong> Engineered MaxMind geolocation validation service processing 1M+ daily streaming requests, ensuring regulatory compliance and accurate traffic routing.</li>
+                                        <li><strong>Streaming Integrity:</strong> Developed Jafar, a traffic-integrity system that reduced concurrent-playback conflicts by 25%.</li>
+                                        <li><strong>Automation:</strong> Created NasBclean for VM storage cleanup, cutting manual maintenance by 40+ hours per month and improving storage efficiency by 15%.</li>
+                                        <li><strong>Live TV Delivery:</strong> Contributed to Reflector, TLSDB Certificate Renewal, and Live Channel Generator, helping deliver seamless live-TV experiences for 500,000+ users.</li>
+                                        <li><strong>Operations &amp; Observability:</strong> Responded to Opsgenie incidents and maintained Grafana, Splunk, and Elasticsearch dashboards for delivery pipelines and production health.</li>
+                                    </ul>
+                                </div>
                                 <div class="tech-stack">
                                     <span class="tech-tag">Python</span>
                                     <span class="tech-tag">FastAPI</span>
@@ -1465,6 +1695,48 @@
                             </a>
                             <a href="https://github.com/poojanshetty/live_language_translator" target="_blank" class="project-link secondary">
                                 <i class="fab fa-github"></i> Code
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=600&h=200&fit=crop" alt="99acres Scrapers">
+                    </div>
+                    <div class="project-content">
+                        <h3>99acres Scrapers</h3>
+                        <p>Web scraper for extracting real estate data from 99acres.com, handling dynamic content and large-scale data collection with error handling and data validation.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Scrapy</span>
+                            <span class="tech-tag">Web Scraping</span>
+                            <span class="tech-tag">Data Processing</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/poojanshetty/99acres-scrapers" target="_blank" class="project-link primary">
+                                <i class="fab fa-github"></i> View on GitHub
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=600&h=200&fit=crop" alt="Medical Appointment">
+                    </div>
+                    <div class="project-content">
+                        <h3>Medical Appointment System</h3>
+                        <p>Complete appointment scheduling system for medical facilities, featuring patient management, doctor availability, booking management, and notification system.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Django</span>
+                            <span class="tech-tag">PostgreSQL</span>
+                            <span class="tech-tag">REST API</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/poojanshetty/Medical_appointment" target="_blank" class="project-link primary">
+                                <i class="fab fa-github"></i> View on GitHub
                             </a>
                         </div>
                     </div>
