@@ -97,10 +97,78 @@
     .about { background: radial-gradient(circle at 85% 25%, rgba(115,91,255,.4), transparent 25%), linear-gradient(135deg, #101735, #1c2454); }
     .cta { padding: 105px 0; background: radial-gradient(circle at 15% 30%, rgba(255,255,255,.2), transparent 16%), linear-gradient(120deg, #7046f0, #238eea); }
     @media (max-width: 850px) { .hero { padding: 84px 0 76px; } .value-strip { margin-top: 0; border-radius: 0; } .hero-card { min-height: 220px; } }
+
+    /* Deep-sea visual language shared with the portfolio and travel pages. */
+    :root { --ink: #e8fbf8; --muted: #91b9bd; --purple: #55e6d0; --blue: #3aa7d8; --soft: #092630; --line: rgba(99,224,211,.2); }
+    body { background: radial-gradient(circle at 50% -10%, rgba(55,191,193,.18), transparent 30%), linear-gradient(180deg, #031017 0%, #061b25 45%, #041019 100%); color: var(--ink); }
+    nav { background: rgba(3,16,23,.88); border-color: var(--line); box-shadow: 0 8px 28px rgba(0,8,14,.35); }
+    .brand { color: var(--ink); }
+    .links a { color: var(--muted); }
+    .links a:hover { color: var(--purple); }
+    .links a::after { background: linear-gradient(90deg, var(--purple), var(--blue)); }
+    .hero { background: radial-gradient(circle at 76% 20%, rgba(85,230,208,.2), transparent 25%), radial-gradient(circle at 15% 95%, rgba(58,154,245,.2), transparent 27%), linear-gradient(135deg, #021018, #06303a 52%, #041522); }
+    .hero::before { opacity: .12; background-image: linear-gradient(90deg, rgba(126,240,223,.35) 1px, transparent 1px), linear-gradient(rgba(126,240,223,.35) 1px, transparent 1px); }
+    .hero::after { background: rgba(58,167,216,.16); }
+    .hero h1 em { color: var(--purple); }
+    .hero p { color: #b8d8da; }
+    .hero .eyebrow { color: var(--purple); background: rgba(63,211,197,.1); box-shadow: inset 0 0 0 1px rgba(126,240,223,.24); }
+    .hero .outline { color: var(--ink); background: rgba(255,255,255,.06); border-color: rgba(126,240,223,.35); }
+    .hero-card { border-color: rgba(126,240,223,.25); background: linear-gradient(145deg, rgba(63,211,197,.17), rgba(4,20,28,.45)); box-shadow: 0 28px 70px rgba(0,0,0,.38); }
+    .hero-card i { color: var(--purple); }
+    .hero-card p { color: #b8d8da; }
+    .button { background: linear-gradient(135deg, var(--purple), var(--blue)); color: #031017; box-shadow: 0 8px 24px rgba(16,147,163,.3); }
+    .outline { background: rgba(63,211,197,.1); color: var(--purple); border-color: rgba(99,224,211,.3); }
+    .value-strip, .value-strip .container { background: rgba(8,34,43,.94); border-color: var(--line); }
+    .value-item { border-color: var(--line); color: var(--ink); }
+    .value-item i, .pricing-box p i { color: var(--purple) !important; }
+    .services, #process { background: rgba(4,29,38,.52); }
+    .heading h2, .service-card h3, .step h3 { color: var(--ink); }
+    .heading p, .service-card p, .step p, .pricing-box p { color: var(--muted); }
+    .service-card, .step, .fit-card, .pricing-box { background: rgba(8,34,43,.82); border-color: var(--line); box-shadow: 0 12px 36px rgba(0,8,14,.3); }
+    .service-card .icon, .service-card:nth-child(2) .icon, .service-card:nth-child(3) .icon, .service-card:nth-child(4) .icon { background: rgba(63,211,197,.12); color: var(--purple); }
+    .service-card:hover, .fit-card:hover, .step:hover { border-color: rgba(85,230,208,.42); box-shadow: 0 18px 42px rgba(0,8,14,.45); }
+    .pricing-box { border-color: rgba(99,224,211,.28); }
+    .pricing-box::after { background: rgba(85,230,208,.1); }
+    .mini-actions a { background: rgba(63,211,197,.1); color: var(--purple); border-color: rgba(99,224,211,.25); }
+    .mini-actions a:hover { background: var(--purple); border-color: var(--purple); color: #031017; }
+    .fit { background: linear-gradient(135deg, #06232c, #082d3b); }
+    .fit-card { background: rgba(255,255,255,.06); border-color: rgba(126,240,223,.18); }
+    .fit-card i { color: var(--purple); }
+    .fit .heading p, .fit-card p { color: #b8d8da; }
+    .step { border-top-color: rgba(85,230,208,.32); }
+    .about { background: radial-gradient(circle at 85% 25%, rgba(85,230,208,.2), transparent 25%), linear-gradient(135deg, #031017, #0b3440); }
+    .cta { background: radial-gradient(circle at 15% 30%, rgba(126,240,223,.18), transparent 16%), linear-gradient(120deg, #087384, #12699a); }
+    footer { background: #020d13; border-color: var(--line); color: var(--muted); }
+    footer a { color: var(--purple); }
+    .theme-toggle { width: 40px; height: 40px; flex: 0 0 auto; border: 1px solid rgba(99,224,211,.3); border-radius: 50%; color: var(--purple); background: rgba(63,211,197,.1); cursor: pointer; }
+    .theme-toggle:hover { background: rgba(63,211,197,.2); }
+    body.light-mode { --ink: #12333b; --muted: #52747a; --soft: #edf9f8; --line: rgba(24,135,143,.2); color: var(--ink); background: linear-gradient(180deg, #e9fbf7 0%, #f5fbfa 38%, #eaf5f7 100%); }
+    .light-mode nav { background: rgba(241,255,252,.9); }
+    .light-mode .links a { color: #52747a; }
+    .light-mode .links a:hover { color: #087384; }
+    .light-mode .theme-toggle { color: #087384; background: rgba(8,115,132,.1); }
+    .light-mode .hero { color: #12333b; background: radial-gradient(circle at 76% 20%, rgba(85,230,208,.28), transparent 25%), radial-gradient(circle at 15% 95%, rgba(58,167,216,.2), transparent 27%), linear-gradient(135deg, #d9f5f1, #e7f4fb); }
+    .light-mode .hero p { color: #52747a; }
+    .light-mode .hero .eyebrow { color: #087384; background: rgba(255,255,255,.45); }
+    .light-mode .hero-card { color: #12333b; border-color: rgba(8,115,132,.2); background: rgba(255,255,255,.62); }
+    .light-mode .hero-card p { color: #52747a; }
+    .light-mode .value-strip, .light-mode .value-strip .container { background: rgba(255,255,255,.84); }
+    .light-mode .value-item, .light-mode .heading h2, .light-mode .service-card h3, .light-mode .step h3 { color: #12333b; }
+    .light-mode .services, .light-mode #process { background: rgba(245,251,250,.8); }
+    .light-mode .service-card, .light-mode .step, .light-mode .pricing-box { background: rgba(255,255,255,.86); }
+    .light-mode .service-card p, .light-mode .step p, .light-mode .pricing-box p, .light-mode .heading p { color: #52747a; }
+    .light-mode .fit { background: linear-gradient(135deg, #d9f5f1, #cfeaf1); color: #12333b; }
+    .light-mode .fit-card { background: rgba(255,255,255,.55); border-color: rgba(8,115,132,.2); }
+    .light-mode .fit-card h3 { color: #12333b; }
+    .light-mode .fit .heading p, .light-mode .fit-card p { color: #52747a; }
+    .light-mode .about { background: linear-gradient(135deg, #0b5966, #147b8a); }
+    .light-mode .cta { background: linear-gradient(120deg, #1c9b9c, #2087b6); }
+    .light-mode footer { background: #dff1f2; color: #52747a; }
+    .light-mode footer a { color: #087384; }
   </style>
 </head>
 <body>
-  <nav><div class="container nav-inner"><a class="brand" href="index.html">Pooja <span>Shetty</span></a><div class="links"><a href="#services">Services</a><a href="#process">Process</a><a href="#about">About</a><a href="index.html">Portfolio</a></div></div></nav>
+  <nav><div class="container nav-inner"><a class="brand" href="index.html">Pooja <span>Shetty</span></a><div class="links"><a href="#services">Services</a><a href="#process">Process</a><a href="#about">About</a><a href="index.html">Portfolio</a></div><button class="theme-toggle" type="button" aria-label="Switch to light mode" title="Switch theme"><i class="fas fa-sun"></i></button></div></nav>
   <header class="hero"><div class="container hero-grid"><div><span class="eyebrow">Freelance developer for small businesses</span><h1>Practical digital solutions that help your <em>business grow.</em></h1><p>I design and build professional websites, custom web tools, and data automations for small businesses that want to save time and make a stronger impression online.</p><div class="actions"><a class="button" href="mailto:poojaniranjanshetty@gmail.com?subject=Freelance%20Project%20Enquiry"><i class="fas fa-envelope"></i> Email Me</a><a class="button outline" href="tel:+919916073885"><i class="fas fa-phone"></i> Call Me</a><a class="button outline" href="https://wa.me/919916073885?text=Hi%20Pooja%2C%20I%20would%20like%20to%20discuss%20a%20freelance%20project." target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i> WhatsApp Me</a></div></div><aside class="hero-card"><i class="fas fa-lightbulb"></i><h2>From idea to launch</h2><p>Clear communication, thoughtful development, and a solution built around what your business genuinely needs.</p></aside></div></header>
   <main>
     <section class="value-strip" style="padding:0;"><div class="container value-grid"><div class="value-item"><i class="fas fa-comments"></i>Clear communication from start to finish</div><div class="value-item"><i class="fas fa-mobile-screen-button"></i>Built to work beautifully on every device</div><div class="value-item"><i class="fas fa-puzzle-piece"></i>Solutions tailored to your business</div></div></section>
@@ -112,5 +180,21 @@
     <section class="cta"><div class="container"><h2>Let’s build something useful.</h2><p>Have a website, tool, or automation idea? Send me a brief note about your business and I’ll get back to you.</p><div class="actions" style="justify-content:center;"><a class="button" href="mailto:poojaniranjanshetty@gmail.com?subject=Freelance%20Project%20Enquiry"><i class="fas fa-paper-plane"></i> Email Me</a><a class="button" href="https://wa.me/919916073885?text=Hi%20Pooja%2C%20I%20would%20like%20to%20discuss%20a%20freelance%20project." target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i> Message on WhatsApp</a></div></div></section>
   </main>
   <footer><div class="container footer"><span>© 2026 Pooja Shetty. All rights reserved.</span><a href="index.html">View my portfolio <i class="fas fa-arrow-right"></i></a></div></footer>
+  <script>
+    const themeToggle = document.querySelector('.theme-toggle');
+    const savedTheme = localStorage.getItem('portfolio-theme');
+    if (savedTheme === 'light') document.body.classList.add('light-mode');
+    const updateThemeToggle = () => {
+      const lightMode = document.body.classList.contains('light-mode');
+      themeToggle.innerHTML = `<i class="fas fa-${lightMode ? 'moon' : 'sun'}"></i>`;
+      themeToggle.setAttribute('aria-label', lightMode ? 'Switch to dark mode' : 'Switch to light mode');
+    };
+    updateThemeToggle();
+    themeToggle.addEventListener('click', () => {
+      document.body.classList.toggle('light-mode');
+      localStorage.setItem('portfolio-theme', document.body.classList.contains('light-mode') ? 'light' : 'dark');
+      updateThemeToggle();
+    });
+  </script>
 </body>
 </html>

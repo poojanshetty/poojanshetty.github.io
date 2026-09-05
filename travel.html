@@ -55,6 +55,17 @@
     .links { display: flex; flex-wrap: wrap; gap: 20px; }
     .links a { color: var(--gray); font-size: 0.9rem; font-weight: 600; text-decoration: none; }
     .links a:hover, .links a.active { color: #fff; }
+    .theme-toggle {
+      width: 40px;
+      height: 40px;
+      flex: 0 0 auto;
+      border: 1px solid rgba(99, 224, 211, 0.3);
+      border-radius: 50%;
+      color: var(--primary);
+      background: rgba(63, 211, 197, 0.1);
+      cursor: pointer;
+    }
+    .theme-toggle:hover { background: rgba(63, 211, 197, 0.2); }
 
     .hero {
       position: relative;
@@ -212,12 +223,36 @@
     .footer-inner { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
     footer a { color: var(--primary); font-weight: 700; text-decoration: none; }
 
+    body.light-mode {
+      --dark: #12333b;
+      --gray: #52747a;
+      --card: rgba(255, 255, 255, 0.88);
+      --line: rgba(24, 135, 143, 0.2);
+      color: var(--dark);
+      background: linear-gradient(180deg, #e9fbf7 0%, #f5fbfa 38%, #eaf5f7 100%);
+    }
+    .light-mode nav { background: rgba(241, 255, 252, 0.9); }
+    .light-mode .links a:hover, .light-mode .links a.active { color: #087384; }
+    .light-mode .theme-toggle { color: #087384; background: rgba(8, 115, 132, 0.1); }
+    .light-mode .hero { color: #12333b; background: radial-gradient(circle at 18% 12%, rgba(85,230,208,.28), transparent 20%), radial-gradient(circle at 80% 18%, rgba(58,167,216,.2), transparent 28%), linear-gradient(135deg, #d9f5f1, #e7f4fb); }
+    .light-mode .hero::after { background: linear-gradient(180deg, transparent, rgba(217,245,241,.8)); }
+    .light-mode .hero p { color: #52747a; }
+    .light-mode .eyebrow { color: #087384; border-color: rgba(8,115,132,.25); background: rgba(255,255,255,.45); }
+    .light-mode .summary-card, .light-mode .country-card { background: rgba(255,255,255,.78); }
+    .light-mode .country-pill { color: #17434b; background: rgba(63,211,197,.1); }
+    .light-mode .memory-carousel { background: linear-gradient(135deg, rgba(216,244,242,.95), rgba(233,246,251,.98)); }
+    .light-mode .memory-card img { background: linear-gradient(135deg, #d7eeee, #e5f0f5); }
+    .light-mode footer { color: #52747a; background: #dff1f2; }
+    .light-mode footer a { color: #087384; }
+
     @media (max-width: 760px) {
       .nav-inner { align-items: flex-start; flex-direction: column; padding: 16px 0; }
       .links { gap: 12px 16px; }
       .summary { grid-template-columns: 1fr; }
-      .memory-card { flex-basis: min(280px, 82vw); }
-      .memory-card img { height: 330px; }
+      .carousel-controls { justify-content: space-between; }
+      .memory-carousel { min-height: 0; padding: 10px; border-radius: 20px; }
+      .memory-card { height: auto; border-radius: 16px; }
+      .memory-card img { height: min(70vh, 560px); max-height: calc(100vh - 230px); border-radius: 16px; object-fit: contain !important; }
     }
   </style>
 </head>
@@ -232,6 +267,7 @@
         <a href="travel.html" class="active">Travel</a>
         <a href="contact.html">Contact</a>
       </div>
+      <button class="theme-toggle" type="button" aria-label="Switch to light mode" title="Switch theme"><i class="fas fa-sun"></i></button>
     </div>
   </nav>
 
@@ -308,6 +344,21 @@
   </main>
 
   <script>
+    const themeToggle = document.querySelector('.theme-toggle');
+    const savedTheme = localStorage.getItem('portfolio-theme');
+    if (savedTheme === 'light') document.body.classList.add('light-mode');
+    const updateThemeToggle = () => {
+      const lightMode = document.body.classList.contains('light-mode');
+      themeToggle.innerHTML = `<i class="fas fa-${lightMode ? 'moon' : 'sun'}"></i>`;
+      themeToggle.setAttribute('aria-label', lightMode ? 'Switch to dark mode' : 'Switch to light mode');
+    };
+    updateThemeToggle();
+    themeToggle.addEventListener('click', () => {
+      document.body.classList.toggle('light-mode');
+      localStorage.setItem('portfolio-theme', document.body.classList.contains('light-mode') ? 'light' : 'dark');
+      updateThemeToggle();
+    });
+
     const travelPhotos = [
       "static/travel_photos/20231111_121655.jpg",
       "static/travel_photos/20231111_155002.jpg",
