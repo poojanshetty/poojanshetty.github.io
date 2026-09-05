@@ -1281,8 +1281,108 @@
     }
 
     iframe {
-   <a href="1q"></a> max-width: 100%;
+        max-width: 100%;
 }
+
+    /* Travel section */
+    .travel-section {
+        background: linear-gradient(135deg, rgba(123, 93, 251, 0.05), rgba(91, 133, 246, 0.08));
+    }
+
+    .travel-intro {
+        max-width: 760px;
+        margin: 0 auto 35px;
+        text-align: center;
+        color: var(--gray);
+    }
+
+    .travel-count {
+        display: inline-block;
+        margin-bottom: 16px;
+        padding: 10px 18px;
+        border-radius: 24px;
+        color: #fff;
+        background: linear-gradient(135deg, var(--primary), var(--secondary));
+        font-weight: 700;
+        box-shadow: 0 8px 22px rgba(123, 93, 251, 0.2);
+    }
+
+    .country-groups {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 24px;
+        margin-bottom: 35px;
+    }
+
+    .country-group {
+        padding: 28px;
+        border: 1px solid rgba(123, 93, 251, 0.12);
+        border-radius: 18px;
+        background: #fff;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+    }
+
+    .country-group h3 {
+        margin-bottom: 16px;
+        color: var(--dark);
+        font-size: 1.25rem;
+    }
+
+    .country-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 9px;
+    }
+
+    .country-pill {
+        padding: 8px 13px;
+        border: 1px solid rgba(123, 93, 251, 0.15);
+        border-radius: 20px;
+        color: var(--dark);
+        background: rgba(123, 93, 251, 0.06);
+        font-size: 0.9rem;
+        font-weight: 600;
+    }
+
+    .travel-gallery {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 16px;
+    }
+
+    .travel-gallery figure {
+        margin: 0;
+        overflow: hidden;
+        border-radius: 16px;
+        background: #fff;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    }
+
+    .travel-gallery img {
+        display: block;
+        width: 100%;
+        height: 180px;
+        object-fit: cover;
+        transition: transform 0.4s ease;
+    }
+
+    .travel-gallery figure:hover img {
+        transform: scale(1.06);
+    }
+
+    .travel-gallery figcaption {
+        padding: 10px 12px;
+        color: var(--gray);
+        font-size: 0.85rem;
+        font-weight: 600;
+    }
+
+    @media (max-width: 720px) {
+        .country-groups,
+        .travel-gallery {
+            grid-template-columns: 1fr;
+        }
+    }
     </style>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -1303,6 +1403,7 @@
             <div class="nav-links" id="navLinks">
                 <a href="#home">About</a>
                 <a href="#personal">Personal life</a>
+                <a href="travel.html">Travel</a>
                 <a href="#experience">Experience</a>
                 <a href="#skills">Skills</a>
                 <a href="#projects">Projects</a>
@@ -1424,6 +1525,65 @@
                         <p class="photo-caption">My little sunshine ☀️</p>
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Travel Section -->
+    <section id="travel" class="travel-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Travel &amp; Countries</h2>
+            </div>
+
+            <div class="travel-intro">
+                <div class="travel-count">25 countries and counting</div>
+                <p>Travel has given me a love for different cultures, conversations, landscapes, and cuisines. Here are the countries currently captured in my list.</p>
+            </div>
+
+            <div class="country-groups">
+                <div class="country-group">
+                    <h3>Home &amp; work</h3>
+                    <div class="country-list">
+                        <span class="country-pill">India · Born here</span>
+                        <span class="country-pill">Netherlands · Worked here</span>
+                    </div>
+                </div>
+                <div class="country-group">
+                    <h3>Visited countries</h3>
+                    <div class="country-list">
+                        <span class="country-pill">Croatia</span>
+                        <span class="country-pill">Bulgaria</span>
+                        <span class="country-pill">Belgium</span>
+                        <span class="country-pill">France</span>
+                        <span class="country-pill">Germany</span>
+                        <span class="country-pill">Denmark</span>
+                        <span class="country-pill">Sweden</span>
+                        <span class="country-pill">Greece</span>
+                        <span class="country-pill">Portugal</span>
+                        <span class="country-pill">Spain</span>
+                        <span class="country-pill">Andorra</span>
+                        <span class="country-pill">Italy</span>
+                        <span class="country-pill">Vatican City</span>
+                        <span class="country-pill">Turkey</span>
+                        <span class="country-pill">Georgia</span>
+                        <span class="country-pill">Singapore</span>
+                        <span class="country-pill">Malta</span>
+                        <span class="country-pill">Serbia</span>
+                        <span class="country-pill">Switzerland</span>
+                        <span class="country-pill">Austria</span>
+                        <span class="country-pill">Norway</span>
+                        <span class="country-pill">Iceland</span>
+                        <span class="country-pill">Azerbaijan</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="travel-gallery">
+                <figure><img src="static/travel_photos/20231111_121655.jpg" alt="Travel memory"><figcaption>European travels</figcaption></figure>
+                <figure><img src="static/travel_photos/20240322_120012.jpg" alt="Travel memory"><figcaption>Discovering new places</figcaption></figure>
+                <figure><img src="static/travel_photos/20240504_164241.jpg" alt="Travel memory"><figcaption>Travel memories</figcaption></figure>
+                <figure><img src="static/travel_photos/IMG_0624.jpg" alt="Travel memory"><figcaption>Always counting down more</figcaption></figure>
             </div>
         </div>
     </section>

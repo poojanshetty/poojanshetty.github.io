@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Pooja Shetty's travel memories and 25-country travel list.">
+  <title>Travel & Countries | Pooja Shetty</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    :root {
+      --primary: #8d72ff;
+      --secondary: #61a5ff;
+      --accent: #ff7da8;
+      --dark: #f4f4f8;
+      --gray: #b9bfd8;
+      --light: #0f1221;
+      --card: rgba(18, 22, 39, 0.8);
+      --card-strong: rgba(12, 16, 28, 0.95);
+      --line: rgba(146, 170, 255, 0.18);
+      --shadow: 0 20px 50px rgba(0, 0, 0, 0.32);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--dark);
+      background: radial-gradient(circle at top, rgba(91, 133, 246, 0.22), transparent 28%), linear-gradient(180deg, #0a0d18 0%, #111827 30%, #0d1424 100%);
+      font-family: Inter, sans-serif;
+      line-height: 1.6;
+    }
+
+    .container { width: min(1120px, calc(100% - 40px)); margin: auto; }
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 5;
+      background: rgba(10, 13, 24, 0.75);
+      border-bottom: 1px solid var(--line);
+      box-shadow: 0 8px 28px rgba(0, 0, 0, 0.18);
+      backdrop-filter: blur(18px);
+    }
+    .nav-inner {
+      min-height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+    .brand { color: var(--dark); font-weight: 800; text-decoration: none; }
+    .brand span { color: var(--primary); }
+    .links { display: flex; flex-wrap: wrap; gap: 20px; }
+    .links a { color: var(--gray); font-size: 0.9rem; font-weight: 600; text-decoration: none; }
+    .links a:hover, .links a.active { color: #fff; }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding: 104px 0 92px;
+      color: #fff;
+      background:
+        radial-gradient(circle at 18% 12%, rgba(170, 146, 255, 0.42), transparent 18%),
+        radial-gradient(circle at 80% 18%, rgba(98, 165, 255, 0.24), transparent 26%),
+        linear-gradient(135deg, #090d17 0%, #111827 32%, #171b2f 100%);
+      border-bottom: 1px solid rgba(146, 170, 255, 0.15);
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      width: 440px;
+      height: 440px;
+      right: -110px;
+      top: -160px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(138, 118, 255, 0.26), rgba(138, 118, 255, 0.04) 42%, transparent 70%);
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      inset: auto 10% 0 10%;
+      height: 120px;
+      background: linear-gradient(180deg, transparent, rgba(9, 13, 23, 0.8));
+      pointer-events: none;
+    }
+    .hero-content { position: relative; z-index: 1; max-width: 760px; }
+    .eyebrow {
+      display: inline-block;
+      margin-bottom: 14px;
+      padding: 7px 12px;
+      border: 1px solid rgba(255, 255, 255, 0.28);
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      background: rgba(255, 255, 255, 0.04);
+    }
+    h1 { margin: 0; font-size: clamp(2.7rem, 6vw, 5rem); line-height: 1.05; letter-spacing: -2px; }
+    .hero p { max-width: 650px; margin: 22px 0 0; color: rgba(255, 255, 255, 0.84); font-size: 1.1rem; }
+
+    main { padding: 70px 0 100px; }
+    .summary {
+      display: grid;
+      grid-template-columns: 0.75fr 1.25fr;
+      gap: 24px;
+      margin-bottom: 55px;
+    }
+    .summary-card, .country-card, .memory-card {
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: var(--card);
+      box-shadow: var(--shadow);
+    }
+    .summary-card { padding: 28px; }
+    .summary-card h2, .country-card h2 { margin: 0 0 12px; font-size: 1.35rem; }
+    .summary-card p { margin: 0; color: var(--gray); }
+    .count {
+      display: inline-block;
+      margin-bottom: 12px;
+      color: var(--primary);
+      font-size: 2.8rem;
+      font-weight: 800;
+      line-height: 1;
+    }
+    .section-heading { margin-bottom: 22px; }
+    .section-heading h2 { margin: 0; font-size: 2rem; }
+    .section-heading p { margin: 5px 0 0; color: var(--gray); }
+    .country-card { padding: 30px; }
+    .country-list { display: flex; flex-wrap: wrap; gap: 10px; }
+    .country-pill {
+      padding: 9px 14px;
+      border: 1px solid rgba(146, 170, 255, 0.18);
+      border-radius: 22px;
+      color: var(--dark);
+      background: rgba(123, 93, 251, 0.12);
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+    .country-pill:hover { color: #fff; background: linear-gradient(135deg, var(--primary), var(--secondary)); }
+
+    .carousel-controls {
+      display: flex;
+      justify-content: flex-end;
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+    .carousel-btn {
+      width: 48px;
+      height: 48px;
+      border: 0;
+      border-radius: 50%;
+      background: linear-gradient(135deg, rgba(141, 114, 255, 1), rgba(97, 165, 255, 1));
+      color: #fff;
+      font-size: 1.35rem;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 0 0 1px rgba(255,255,255,0.2), 0 12px 28px rgba(123, 93, 251, 0.45), 0 0 22px rgba(97, 165, 255, 0.26);
+      transition: transform 0.25s ease, box-shadow 0.25s ease, filter 0.25s ease;
+    }
+    .carousel-btn:hover {
+      transform: translateY(-2px) scale(1.04);
+      box-shadow: 0 0 0 1px rgba(255,255,255,0.25), 0 16px 30px rgba(123, 93, 251, 0.58), 0 0 28px rgba(97, 165, 255, 0.3);
+      filter: brightness(1.08);
+    }
+    .memory-carousel {
+      position: relative;
+      min-height: 700px;
+      overflow: hidden;
+      border: 1px solid rgba(146, 170, 255, 0.15);
+      border-radius: 30px;
+      background: linear-gradient(135deg, rgba(17, 23, 38, 0.96), rgba(11, 15, 25, 0.95));
+      box-shadow: 0 22px 60px rgba(0, 0, 0, 0.28);
+      padding: 20px;
+    }
+    .memory-card {
+      display: none;
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      overflow: hidden;
+      border-radius: 26px;
+      background: rgba(0,0,0,0.15);
+      box-shadow: inset 0 0 0 1px rgba(146, 170, 255, 0.08);
+    }
+    .memory-card.active {
+      display: block;
+    }
+    .memory-card img {
+      display: block;
+      width: 100%;
+      height: 700px;
+      object-fit: contain;
+      background: linear-gradient(135deg, #141a2d, #0d1322);
+      border-radius: 26px;
+      transition: transform 0.35s ease;
+    }
+    .memory-card.active img:hover {
+      transform: scale(1.02);
+    }
+    .memory-card img.portrait {
+      object-fit: contain;
+    }
+    .memory-card img.landscape {
+      object-fit: cover;
+    }
+
+    footer { padding: 24px 0; color: #fff; background: #333; }
+    .footer-inner { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+    footer a { color: #fff; font-weight: 700; text-decoration: none; }
+
+    @media (max-width: 760px) {
+      .nav-inner { align-items: flex-start; flex-direction: column; padding: 16px 0; }
+      .links { gap: 12px 16px; }
+      .summary { grid-template-columns: 1fr; }
+      .memory-card { flex-basis: min(280px, 82vw); }
+      .memory-card img { height: 330px; }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="container nav-inner">
+      <a class="brand" href="index.html">Pooja <span>Shetty</span></a>
+      <div class="links">
+        <a href="index.html">About</a>
+        <a href="experience.html">Experience</a>
+        <a href="projects.html">Projects</a>
+        <a href="travel.html" class="active">Travel</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="container hero-content">
+      <span class="eyebrow">Beyond the code</span>
+      <h1>25 countries, countless memories.</h1>
+      <p>Travel has given me a love for different cultures, conversations, landscapes, and cuisines. Here is a collection of the places that have shaped my journey.</p>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+      <section class="summary">
+        <article class="summary-card">
+          <span class="count">25</span>
+          <h2>Countries visited</h2>
+          <p>India is where I was born, and the Netherlands is where I worked and lived for three years.</p>
+        </article>
+        <article class="summary-card">
+          <h2>A growing travel story</h2>
+          <p>I enjoy meeting people from different backgrounds, learning their perspectives, trying local cuisines, and collecting memories along the way. Every trip gives me a new way to see the world.</p>
+        </article>
+      </section>
+
+      <section aria-labelledby="countries-heading">
+        <div class="section-heading">
+          <h2 id="countries-heading">Countries I have visited</h2>
+          <p>Listed alphabetically, with India as home and the Netherlands as a place I worked.</p>
+        </div>
+        <article class="country-card">
+          <div class="country-list">
+            <span class="country-pill">Andorra</span>
+            <span class="country-pill">Austria</span>
+            <span class="country-pill">Azerbaijan</span>
+            <span class="country-pill">Belgium</span>
+            <span class="country-pill">Bulgaria</span>
+            <span class="country-pill">Croatia</span>
+            <span class="country-pill">Denmark</span>
+            <span class="country-pill">France</span>
+            <span class="country-pill">Georgia</span>
+            <span class="country-pill">Germany</span>
+            <span class="country-pill">Greece</span>
+            <span class="country-pill">Iceland</span>
+            <span class="country-pill">India · Born here</span>
+            <span class="country-pill">Italy</span>
+            <span class="country-pill">Malta</span>
+            <span class="country-pill">Netherlands · Worked here</span>
+            <span class="country-pill">Norway</span>
+            <span class="country-pill">Portugal</span>
+            <span class="country-pill">Serbia</span>
+            <span class="country-pill">Singapore</span>
+            <span class="country-pill">Spain</span>
+            <span class="country-pill">Sweden</span>
+            <span class="country-pill">Switzerland</span>
+            <span class="country-pill">Turkey</span>
+            <span class="country-pill">Vatican City</span>
+          </div>
+        </article>
+      </section>
+
+      <section aria-labelledby="memories-heading" style="margin-top: 65px;">
+        <div class="section-heading">
+          <h2 id="memories-heading">Travel memories</h2>
+          <p>Photos from the travel collection.</p>
+        </div>
+        <div class="carousel-controls" aria-label="Travel gallery controls">
+          <button class="carousel-btn" type="button" data-dir="-1" aria-label="Scroll left">&#8592;</button>
+          <button class="carousel-btn" type="button" data-dir="1" aria-label="Scroll right">&#8594;</button>
+        </div>
+        <div class="memory-carousel" id="memoryCarousel" aria-label="Wide travel photo gallery"></div>
+      </section>
+    </div>
+  </main>
+
+  <script>
+    const travelPhotos = [
+      "static/travel_photos/20231111_121655.jpg",
+      "static/travel_photos/20231111_155002.jpg",
+      "static/travel_photos/20231112_110718.jpg",
+      "static/travel_photos/20231112_113809.jpg",
+      "static/travel_photos/20231112_114536.jpg",
+      "static/travel_photos/20231112_125320.jpg",
+      "static/travel_photos/20231112_133638.jpg",
+      "static/travel_photos/20231114_121206.jpg",
+      "static/travel_photos/20231114_144258.jpg",
+      "static/travel_photos/20231114_144308.jpg",
+      "static/travel_photos/20231114_154831.jpg",
+      "static/travel_photos/20231114_171646.jpg",
+      "static/travel_photos/20231114_220725.jpg",
+      "static/travel_photos/20231114_221023.jpg",
+      "static/travel_photos/20231114_224106 (1).jpg",
+      "static/travel_photos/20231114_224106.jpg",
+      "static/travel_photos/20231116_111504.jpg",
+      "static/travel_photos/20231117_094659.jpg",
+      "static/travel_photos/20231117_095210.jpg",
+      "static/travel_photos/20231117_095428.jpg",
+      "static/travel_photos/20231117_100819.jpg",
+      "static/travel_photos/20231117_123312.jpg",
+      "static/travel_photos/20231117_123556.jpg",
+      "static/travel_photos/20231117_155357.jpg",
+      "static/travel_photos/20231201_135655.jpg",
+      "static/travel_photos/20231201_145810.jpg",
+      "static/travel_photos/20231216_160141.jpg",
+      "static/travel_photos/20231216_161723.jpg",
+      "static/travel_photos/2024-02-02-18-27-15-732.jpg",
+      "static/travel_photos/20240203_113650.jpg",
+      "static/travel_photos/20240203_115126.jpg",
+      "static/travel_photos/20240203_115933.jpg",
+      "static/travel_photos/20240203_144009.jpg",
+      "static/travel_photos/20240203_171606.jpg",
+      "static/travel_photos/20240203_172048.jpg",
+      "static/travel_photos/20240205_110516.jpg",
+      "static/travel_photos/20240205_153601.jpg",
+      "static/travel_photos/20240205_155106.jpg",
+      "static/travel_photos/20240206_105929.jpg",
+      "static/travel_photos/20240322_120012.jpg",
+      "static/travel_photos/20240324_143159.jpg",
+      "static/travel_photos/20240326_103346.jpg",
+      "static/travel_photos/20240326_125007.jpg",
+      "static/travel_photos/20240328_061930 1.jpg",
+      "static/travel_photos/20240330_103309.jpg",
+      "static/travel_photos/20240330_104141.jpg",
+      "static/travel_photos/20240330_115911.jpg",
+      "static/travel_photos/20240331_092555.jpg",
+      "static/travel_photos/20240331_104829.jpg",
+      "static/travel_photos/20240504_164241.jpg",
+      "static/travel_photos/20240526_150319.jpg",
+      "static/travel_photos/20240529_131404.jpg",
+      "static/travel_photos/20240529_162156.jpg",
+      "static/travel_photos/20240531_123950.jpg",
+      "static/travel_photos/20240601_121618.jpg",
+      "static/travel_photos/20240602_080128.jpg",
+      "static/travel_photos/20240602_082517.jpg",
+      "static/travel_photos/20240602_083331.jpg",
+      "static/travel_photos/3fb8b32b-a3e6-4ad0-be19-37fc842d55a5.JPG",
+      "static/travel_photos/4266DF14-2DB8-4040-9686-980F96FE83E9.JPG",
+      "static/travel_photos/6f70ba3b-ef99-4d13-942e-d00c0a4aa0a7.JPG",
+      "static/travel_photos/879dfadf-74bc-4ecf-aa02-de15466a877c.JPG",
+      "static/travel_photos/FullSizeRender.jpeg",
+      "static/travel_photos/IMG_0624.jpg",
+      "static/travel_photos/IMG_1418.JPG",
+      "static/travel_photos/IMG_2070.JPG",
+      "static/travel_photos/IMG_2080.JPG",
+      "static/travel_photos/IMG_2107.JPG",
+      "static/travel_photos/IMG_2178.jpg",
+      "static/travel_photos/IMG_2208.jpg",
+      "static/travel_photos/IMG_2963.jpg",
+      "static/travel_photos/IMG_3471.jpeg",
+      "static/travel_photos/IMG_3545.jpeg",
+      "static/travel_photos/IMG_3769.JPG",
+      "static/travel_photos/IMG_4107.JPG",
+      "static/travel_photos/IMG_4115.JPG",
+      "static/travel_photos/IMG_4188.JPG",
+      "static/travel_photos/IMG_4422.JPG",
+      "static/travel_photos/IMG_4429.JPG",
+      "static/travel_photos/IMG_4439.JPG",
+      "static/travel_photos/IMG_4494.JPG",
+      "static/travel_photos/IMG_6870.JPG",
+      "static/travel_photos/IMG_6885.JPG",
+      "static/travel_photos/IMG_6938.JPG",
+      "static/travel_photos/IMG_6942.JPG",
+      "static/travel_photos/IMG_7003.JPG",
+      "static/travel_photos/IMG_8241.JPG",
+      "static/travel_photos/IMG_8293.JPG",
+      "static/travel_photos/IMG_8304.jpg",
+      "static/travel_photos/IMG_8398 2.JPG",
+      "static/travel_photos/IMG_8411 2.JPG",
+      "static/travel_photos/IMG_8422 2.JPG",
+      "static/travel_photos/IMG_8554.JPG",
+      "static/travel_photos/IMG_8666.jpg",
+      "static/travel_photos/IMG_8744.JPG",
+      "static/travel_photos/IMG_8760.JPG",
+      "static/travel_photos/IMG_8799 2.JPG",
+      "static/travel_photos/IMG_8818.JPG",
+      "static/travel_photos/IMG_8930.jpg",
+      "static/travel_photos/IMG_9125.JPG",
+      "static/travel_photos/IMG_9434.jpg",
+      "static/travel_photos/IMG_9787.JPG",
+      "static/travel_photos/acdced2c-b736-4e71-b00f-8bdaf31baaa7.JPG",
+      "static/travel_photos/b7215730-ce7f-42df-b063-83b72723d209.JPG"
+    ];
+
+    const shufflePhotos = (photos) => {
+      const shuffled = [...photos];
+      for (let i = shuffled.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+      }
+      return shuffled;
+    };
+
+    const orderedPhotos = shufflePhotos(travelPhotos);
+    const carousel = document.getElementById('memoryCarousel');
+    if (carousel) {
+      let currentIndex = 0;
+
+      const renderCurrentPhoto = () => {
+        const label = `Travel memory ${currentIndex + 1}`;
+        const src = orderedPhotos[currentIndex];
+        const img = new Image();
+        img.onload = () => {
+          const orientation = img.naturalHeight > img.naturalWidth ? 'portrait' : 'landscape';
+          carousel.innerHTML = `
+            <figure class="memory-card active">
+              <img src="${src}" alt="${label}" loading="eager" class="${orientation}">
+            </figure>
+          `;
+        };
+        img.src = src;
+      };
+
+      renderCurrentPhoto();
+
+      document.querySelectorAll('.carousel-btn').forEach((button) => {
+        button.addEventListener('click', () => {
+          const direction = Number(button.dataset.dir || 1);
+          currentIndex = (currentIndex + direction + orderedPhotos.length) % orderedPhotos.length;
+          renderCurrentPhoto();
+        });
+      });
+    }
+  </script>
+
+  <footer>
+    <div class="container footer-inner">
+      <span>© 2025 Pooja Niranjan Shetty</span>
+      <a href="index.html#contact">Let's connect</a>
+    </div>
+  </footer>
+</body>
+</html>
