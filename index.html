@@ -1084,6 +1084,199 @@
         border: 1px solid rgba(255, 255, 255, 0.1);
     }
 
+    /* Deep-sea visual language for the portfolio surface. */
+    :root {
+        --primary: #55e6d0;
+        --secondary: #3aa7d8;
+        --accent: #f2c879;
+        --dark: #e8fbf8;
+        --light: #06141b;
+        --gray: #91b9bd;
+        --shadow: 0 10px 30px rgba(0, 8, 14, 0.34);
+        --shadow-lg: 0 20px 60px rgba(0, 8, 14, 0.5);
+    }
+
+    body {
+        background: radial-gradient(circle at 50% -10%, rgba(55, 191, 193, 0.18), transparent 30%), linear-gradient(180deg, #031017 0%, #061b25 44%, #041019 100%);
+        color: var(--dark);
+    }
+
+    header {
+        background: radial-gradient(circle at 18% 8%, rgba(74, 221, 202, 0.22), transparent 24%), linear-gradient(135deg, #021018 0%, #06303a 48%, #041522 100%);
+        border-bottom: 1px solid rgba(99, 224, 211, 0.2);
+    }
+
+    header::before {
+        background: radial-gradient(circle, rgba(82, 229, 210, 0.16), transparent 68%);
+    }
+
+    header::after {
+        background: radial-gradient(circle, rgba(58, 167, 216, 0.14), transparent 70%);
+    }
+
+    nav {
+        background: rgba(3, 16, 23, 0.86);
+        border-bottom: 1px solid rgba(99, 224, 211, 0.2);
+        box-shadow: 0 8px 32px rgba(0, 8, 14, 0.35);
+    }
+
+    .nav-links a,
+    .mobile-menu-btn {
+        color: var(--gray);
+    }
+
+    .nav-links a:hover {
+        color: var(--primary);
+    }
+
+    section:nth-of-type(even) {
+        background: rgba(4, 29, 38, 0.48);
+    }
+
+    .section-title h2,
+    .about-text h3,
+    .exp-details h4,
+    .fun-facts h4,
+    .skill-category h3,
+    .project-content h3 {
+        color: var(--dark);
+    }
+
+    .section-title h2::after,
+    .exp-card::before,
+    .project-card::before {
+        background: linear-gradient(90deg, var(--primary), var(--secondary), var(--accent));
+        box-shadow: 0 4px 15px rgba(85, 230, 208, 0.2);
+    }
+
+    .profile-image,
+    .photo-item,
+    .exp-card,
+    .fun-facts,
+    .skill-category,
+    .project-card,
+    .contact-item {
+        background: rgba(8, 34, 43, 0.82);
+        border-color: rgba(99, 224, 211, 0.18);
+        box-shadow: 0 12px 40px rgba(0, 8, 14, 0.35);
+    }
+
+    .profile-image:hover,
+    .photo-item:hover,
+    .exp-card:hover,
+    .skill-category:hover,
+    .project-card:hover {
+        border-color: rgba(85, 230, 208, 0.42);
+        box-shadow: 0 25px 60px rgba(0, 8, 14, 0.55), 0 0 30px rgba(48, 167, 183, 0.12);
+    }
+
+    .personal-photo-only {
+        background: transparent;
+        border: 0;
+        box-shadow: none;
+    }
+
+    .personal-photo-only:hover {
+        box-shadow: none;
+    }
+
+    .personal-photo-only img {
+        border-radius: 18px;
+    }
+
+    .contact-item {
+        color: var(--dark);
+    }
+
+    .contact-item:hover {
+        border-color: rgba(85, 230, 208, 0.42);
+    }
+
+    .timeline-container::before {
+        background: linear-gradient(to bottom, var(--primary), var(--secondary));
+    }
+
+    .timeline-item::before {
+        border-color: #08222b;
+        box-shadow: 0 0 0 4px var(--primary), 0 0 20px rgba(85, 230, 208, 0.45);
+    }
+
+    .timeline-date,
+    .skill-item,
+    .project-link.primary,
+    .cta-button {
+        background: linear-gradient(135deg, var(--primary), var(--secondary));
+        color: #031017;
+        box-shadow: 0 8px 24px rgba(16, 147, 163, 0.3);
+    }
+
+    .exp-description .tech-stack,
+    .experience-block + .experience-block {
+        border-color: rgba(99, 224, 211, 0.16);
+    }
+
+    .fact,
+    .tech-tag,
+    .project-link.secondary {
+        background: rgba(35, 147, 157, 0.14);
+        border-color: rgba(99, 224, 211, 0.22);
+        color: var(--primary);
+    }
+
+    .fact:hover,
+    .tech-tag:hover,
+    .project-link.secondary:hover {
+        background: rgba(63, 211, 197, 0.22);
+        border-color: var(--primary);
+    }
+
+    .theme-toggle {
+        background: #08222b;
+        border-color: rgba(99, 224, 211, 0.26);
+        color: var(--primary);
+        box-shadow: 0 8px 25px rgba(0, 8, 14, 0.4);
+    }
+
+    footer {
+        background: linear-gradient(135deg, #020d13 0%, #06232c 100%);
+    }
+
+    footer::before {
+        background: radial-gradient(circle, rgba(85, 230, 208, 0.12), transparent);
+    }
+
+    .social-links a {
+        background: rgba(63, 211, 197, 0.1);
+        border-color: rgba(126, 240, 223, 0.28);
+    }
+
+    .social-links a:hover {
+        background: linear-gradient(135deg, var(--primary), var(--secondary));
+        box-shadow: 0 10px 30px rgba(16, 147, 163, 0.4);
+    }
+
+    .copyright {
+        border-color: rgba(99, 224, 211, 0.16);
+    }
+
+    .back-to-top {
+        background: linear-gradient(135deg, var(--primary), var(--secondary));
+        color: #031017;
+        box-shadow: 0 8px 25px rgba(16, 147, 163, 0.35);
+    }
+
+    .dark-mode {
+        --light: #06141b;
+        --dark: #e8fbf8;
+        --gray: #91b9bd;
+        background: linear-gradient(180deg, #031017 0%, #061b25 44%, #041019 100%);
+    }
+
+    .dark-mode nav,
+    .nav-links.active {
+        background: rgba(3, 16, 23, 0.96);
+    }
+
     .exp-company a {
     color: white;
     background: linear-gradient(135deg, var(--primary), var(--secondary));
@@ -1284,105 +1477,6 @@
         max-width: 100%;
 }
 
-    /* Travel section */
-    .travel-section {
-        background: linear-gradient(135deg, rgba(123, 93, 251, 0.05), rgba(91, 133, 246, 0.08));
-    }
-
-    .travel-intro {
-        max-width: 760px;
-        margin: 0 auto 35px;
-        text-align: center;
-        color: var(--gray);
-    }
-
-    .travel-count {
-        display: inline-block;
-        margin-bottom: 16px;
-        padding: 10px 18px;
-        border-radius: 24px;
-        color: #fff;
-        background: linear-gradient(135deg, var(--primary), var(--secondary));
-        font-weight: 700;
-        box-shadow: 0 8px 22px rgba(123, 93, 251, 0.2);
-    }
-
-    .country-groups {
-        display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 24px;
-        margin-bottom: 35px;
-    }
-
-    .country-group {
-        padding: 28px;
-        border: 1px solid rgba(123, 93, 251, 0.12);
-        border-radius: 18px;
-        background: #fff;
-        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
-    }
-
-    .country-group h3 {
-        margin-bottom: 16px;
-        color: var(--dark);
-        font-size: 1.25rem;
-    }
-
-    .country-list {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 9px;
-    }
-
-    .country-pill {
-        padding: 8px 13px;
-        border: 1px solid rgba(123, 93, 251, 0.15);
-        border-radius: 20px;
-        color: var(--dark);
-        background: rgba(123, 93, 251, 0.06);
-        font-size: 0.9rem;
-        font-weight: 600;
-    }
-
-    .travel-gallery {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 16px;
-    }
-
-    .travel-gallery figure {
-        margin: 0;
-        overflow: hidden;
-        border-radius: 16px;
-        background: #fff;
-        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
-    }
-
-    .travel-gallery img {
-        display: block;
-        width: 100%;
-        height: 180px;
-        object-fit: cover;
-        transition: transform 0.4s ease;
-    }
-
-    .travel-gallery figure:hover img {
-        transform: scale(1.06);
-    }
-
-    .travel-gallery figcaption {
-        padding: 10px 12px;
-        color: var(--gray);
-        font-size: 0.85rem;
-        font-weight: 600;
-    }
-
-    @media (max-width: 720px) {
-        .country-groups,
-        .travel-gallery {
-            grid-template-columns: 1fr;
-        }
-    }
     </style>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -1453,11 +1547,11 @@
         </div>
         <div class="about-content">
             <div class="profile-image floating">
-                <img src="static/assets/profile-photo.jpeg" alt="Pooja Niranjan Shetty">
+                <img src="static/assets/pooja.jpg" alt="Pooja Niranjan Shetty">
             </div>
             <div class="about-text">
             <h3>Hi👋, I'm Pooja Shetty</h3>
-            <p>I'm a 28-year-old Software Engineer, wife, and proud mom to a beautiful baby girl born in February 2025.</p>
+            <p>I'm a 29-year-old Software Engineer, wife, and proud mom to a beautiful baby girl born in February 2025.</p>
             <p>Originally from Bangalore, India, I spent 3 amazing years living and working in the Netherlands as a Software Engineer (Data | DevOps) at KPN.</p>
             <p> Professionally, I'm specialized in Data engineering and DevOps. Over the years, I’ve worked extensively with technologies such as Python, JavaScript, SQL, and AWS. My daily tech stack also included Pandas, CI/CD pipelines, Docker, Jenkins, Artifactory, Git, Grafana, Splunk, and various testing frameworks (unit, smoke, and functional testing).</p>
             <p> I made the decision to return to India during my seventh month of pregnancy due to limited support abroad and family health concerns. Traveling beyond that point was medically restricted, so I relocated early to ensure a safe delivery and better care. I am now ready to return to work and am actively seeking opportunities where I can leverage my skills and experience.</p>
@@ -1525,65 +1619,6 @@
                         <p class="photo-caption">My little sunshine ☀️</p>
                     </div>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Travel Section -->
-    <section id="travel" class="travel-section">
-        <div class="container">
-            <div class="section-title">
-                <h2>Travel &amp; Countries</h2>
-            </div>
-
-            <div class="travel-intro">
-                <div class="travel-count">25 countries and counting</div>
-                <p>Travel has given me a love for different cultures, conversations, landscapes, and cuisines. Here are the countries currently captured in my list.</p>
-            </div>
-
-            <div class="country-groups">
-                <div class="country-group">
-                    <h3>Home &amp; work</h3>
-                    <div class="country-list">
-                        <span class="country-pill">India · Born here</span>
-                        <span class="country-pill">Netherlands · Worked here</span>
-                    </div>
-                </div>
-                <div class="country-group">
-                    <h3>Visited countries</h3>
-                    <div class="country-list">
-                        <span class="country-pill">Croatia</span>
-                        <span class="country-pill">Bulgaria</span>
-                        <span class="country-pill">Belgium</span>
-                        <span class="country-pill">France</span>
-                        <span class="country-pill">Germany</span>
-                        <span class="country-pill">Denmark</span>
-                        <span class="country-pill">Sweden</span>
-                        <span class="country-pill">Greece</span>
-                        <span class="country-pill">Portugal</span>
-                        <span class="country-pill">Spain</span>
-                        <span class="country-pill">Andorra</span>
-                        <span class="country-pill">Italy</span>
-                        <span class="country-pill">Vatican City</span>
-                        <span class="country-pill">Turkey</span>
-                        <span class="country-pill">Georgia</span>
-                        <span class="country-pill">Singapore</span>
-                        <span class="country-pill">Malta</span>
-                        <span class="country-pill">Serbia</span>
-                        <span class="country-pill">Switzerland</span>
-                        <span class="country-pill">Austria</span>
-                        <span class="country-pill">Norway</span>
-                        <span class="country-pill">Iceland</span>
-                        <span class="country-pill">Azerbaijan</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="travel-gallery">
-                <figure><img src="static/travel_photos/20231111_121655.jpg" alt="Travel memory"><figcaption>European travels</figcaption></figure>
-                <figure><img src="static/travel_photos/20240322_120012.jpg" alt="Travel memory"><figcaption>Discovering new places</figcaption></figure>
-                <figure><img src="static/travel_photos/20240504_164241.jpg" alt="Travel memory"><figcaption>Travel memories</figcaption></figure>
-                <figure><img src="static/travel_photos/IMG_0624.jpg" alt="Travel memory"><figcaption>Always counting down more</figcaption></figure>
             </div>
         </div>
     </section>
