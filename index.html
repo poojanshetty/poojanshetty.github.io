@@ -779,6 +779,16 @@
         transition: transform 0.5s ease;
     }
 
+    .project-icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+        color: #031017;
+        background: linear-gradient(135deg, #55e6d0, #3aa7d8);
+        font-size: 3.2rem;
+    }
+
     .project-card:hover .project-image img {
         transform: scale(1.1);
     }
@@ -1957,6 +1967,27 @@
                 <h2>Featured Projects</h2>
             </div>
             <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-image project-icon" role="img" aria-label="Docker image optimizer">
+                        <i class="fab fa-docker"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3>AI-Powered Docker Image Optimizer</h3>
+                        <p>Analyzes Dockerfiles and provides practical recommendations to reduce image size and improve build performance. Recommendations are generated locally with GPT4All, so Dockerfiles stay on the machine.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">GPT4All</span>
+                            <span class="tech-tag">Docker</span>
+                            <span class="tech-tag">CLI</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/poojanshetty/AI-Powered-Docker-Image-Size-Optimizer" target="_blank" rel="noopener noreferrer" class="project-link primary">
+                                <i class="fab fa-github"></i> View on GitHub
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="project-card">
                     <div class="project-image">
                         <img src="static/assets/maxmind.png" alt="Maxmind Geolocation">
